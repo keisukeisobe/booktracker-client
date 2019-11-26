@@ -7,8 +7,7 @@ export default class RegistrationForm extends Component {
   }
 
   state = {error: null}
-
-
+  
   handleSubmit = event => {
     event.preventDefault()
     const { username, password, email } = event.target

@@ -14,11 +14,12 @@ export default class AddBook extends Component {
     history.push(`/users/${this.props.userId}`)
   }
 
-  handleSubmit= event => {
+  handleSubmit = event => {
     event.preventDefault();
     const title = event.target.title;
     const author = event.target.author;
     const description = event.target.description;
+    const maxpagecount = event.target.maxpagecount;
     fetch(`${config.API_ENDPOINT}/users/${this.props.userId}`, {
       method: 'POST',
       headers: {
@@ -29,6 +30,7 @@ export default class AddBook extends Component {
         title: title.value,
         author: author.value,
         description: description.value,
+        maxpagecount: maxpagecount.value
       }),
     })
       .then(res => {
@@ -42,6 +44,7 @@ export default class AddBook extends Component {
         title.value = '';
         author.value = '';
         description.value = '';
+        maxpagecount.value = '';
         this.handleAddBookSuccess();
       })
   }
@@ -60,8 +63,13 @@ export default class AddBook extends Component {
           </label>
         </div>        
         <div className="description">
-          <label htmlFor="description"> description:
+          <label htmlFor="description">Description:
             <input type="text" name="description" id="description" required></input>
+          </label>
+        </div>
+        <div className="maxpagecount">
+          <label htmlFor="maxpagecount">Total Page Count:
+            <input type="number" min="0" name="maxpagecount" id="maxpagecount" required></input>
           </label>
         </div>
         <button type='submit'>Submit</button>
