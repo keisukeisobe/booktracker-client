@@ -112,24 +112,24 @@ export default class UserProfile extends Component {
                 worldbuilding: Number(worldCorr),
                 theme: Number(themeCorr)
               },
-              meta: {color: 'blue'}
+              meta: {color: 'orange'}
             }
           ]
           const captions = {plot: 'Plot', prose: 'Prose', characters: 'Characters', worldbuilding: 'Worldbuilding', theme: 'Theme'}
           for (let index = 0; index < title.length; index++){
             bookOrder[String(title[index])] = title[index]
             ratingData[0].data[title[index]]=rating[index]/5
-            ratingData[0].meta={color: 'blue'}
+            ratingData[0].meta={color: 'orange'}
             plotData[0].data[title[index]]=plot[index]/5
             plotData[0].meta={color: 'red'}
             proseData[0].data[title[index]]=prose[index]/5
-            proseData[0].meta={color: 'orange'}
+            proseData[0].meta={color: 'green'}
             charData[0].data[title[index]]=characters[index]/5
-            charData[0].meta={color: 'yellow'}
+            charData[0].meta={color: 'blue'}
             worldData[0].data[title[index]]=worldbuilding[index]/5
-            worldData[0].meta={color: 'green'}
+            worldData[0].meta={color: 'purple'}
             themeData[0].data[title[index]]=theme[index]/5
-            themeData[0].meta={color: 'purple'}
+            themeData[0].meta={color: 'grey'}
           }  
           this.setState({profileData: profileData})
           this.setState({captions: captions})

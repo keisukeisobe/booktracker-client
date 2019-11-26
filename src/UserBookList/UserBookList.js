@@ -4,7 +4,8 @@ import Book from '../Book/Book'
 
 export default class UserBookList extends Component {
   state = {
-    filter: '',
+    readingStatusFilter: '',
+    ratingFilter: 0,
     sort: '',
     books: this.props.books,
   }
@@ -16,40 +17,12 @@ export default class UserBookList extends Component {
   componentDidMount() {
     const userId = this.props.match.params.user_id;
     this.props.setUserId(userId);
+    this.setState({displayBooks: this.state.book})
   }
 
-  componentWillUnmount() {
-    this.props.setError(null)
-  }
-
-  handleFilterClick = (event) => {
-    const newBooks = [...this.props.books]
-    if(event.target.value ===''){
-      this.setState({books: newBooks})
-    }
-    if(event.target.value === 'readingStatusInProgress'){
-      this.setState({books: newBooks.filter(book => book.status==='in progress')})
-    }
-    if(event.target.value === 'readingStatusCompleted'){
-      this.setState({books: newBooks.filter(book => book.status==='completed')})
-    }
-    if(event.target.value === 'readingStatusDNF'){
-      this.setState({books: newBooks.filter(book => book.status==='DNF')})
-    }
-    if(event.target.value === 'rating5'){
-      this.setState({books: newBooks.filter(book => book.rating === 5)})
-    }
-    if(event.target.value === 'rating4'){
-      this.setState({books: newBooks.filter(book => book.rating >= 4)})
-    }
-    if(event.target.value === 'rating3'){
-      this.setState({books: newBooks.filter(book => book.rating >= 3)})
-    }
-    if(event.target.value === 'rating2'){
-      this.setState({books: newBooks.filter(book => book.rating >= 2)})
-    }
-    this.setState({filter: event.target.value})
-  }
+  // componentWillUnmount() {
+  //   this.props.setError(null)
+  // }
 
   handleSortClick = (event) => {
     const newBooks = [...this.props.books]
@@ -89,15 +62,48 @@ export default class UserBookList extends Component {
     )
   }
 
-  renderFilter() {
+  handleReadingStatusFilterClick = (event) => {
+    const readingStatusToString = {
+      blankStatus: '',
+      readingStatusInProgress: 'in progress',
+      readingStatusDNF: 'DNF',
+      readingStatusCompleted: 'completed'
+    }
+    this.setState({readingStatusFilter: readingStatusToString[event.target.value]})
+  }
+
+  renderReadingStatusFilter() {
     return (
       <>
-        <label htmlFor="filter">Filter: </label>
-        <select name="filter" value={this.state.filter} id="filter" onChange={this.handleFilterClick}>
-          <option value="">No Filter</option>
+        <label htmlFor="readingStatusFilter">Reading Status: </label>
+        <select name="readingStatusFilter" value={this.state.filter} id="readingStatusFilter" onChange={this.handleReadingStatusFilterClick}>
+          <option value="blankStatus">No Filter</option>
           <option value="readingStatusInProgress">In Progress</option>
           <option value="readingStatusCompleted">Completed</option>
           <option value="readingStatusDNF">Did Not Finish</option>
+        </select>
+      </>
+    )
+  }
+
+  handleRatingFilterClick = (event) => {
+    const ratingToNumber = {
+      rating0: 0,
+      rating1: 1,
+      rating2: 2,
+      rating3: 3,
+      rating4: 4,
+      rating5: 5
+    }
+    this.setState({ratingFilter: ratingToNumber[event.target.value]})
+  }
+
+  renderRatingFilter(){
+    return (
+      <>
+        <label htmlFor="ratingFilter">Rating: </label>
+        <select name="ratingFilter" value={this.state.filter} id="ratingFilter" onChange={this.handleRatingFilterClick}>
+          <option value="rating0">No Filter</option>
           <option value="rating5">Rating: 5</option>
           <option value="rating4">Rating: 4</option>
           <option value="rating3">Rating: 3</option>
@@ -105,6 +111,11 @@ export default class UserBookList extends Component {
         </select>
       </>
     )
+  }
+
+  handleFilter = (event) => {
+    this.handleReadingStatusFilterClick(event)
+    this.handleRatingFilterClick(event)
   }
 
   renderSubHeader() {
@@ -120,7 +131,13 @@ export default class UserBookList extends Component {
   }
 
   renderBooks() {
-    const books = this.state.books
+    let books = this.state.books
+    if(this.state.ratingFilter > 0){
+      books = books.filter(book => book.rating === this.state.ratingFilter)
+    }
+    if(this.state.readingStatusFilter){
+      books = books.filter(book => book.status === this.state.readingStatusFilter)
+    }
     const userId = this.props.userId
     if (this.props.booksNumber === 0) {
       return <p>Loading...</p>
@@ -131,7 +148,9 @@ export default class UserBookList extends Component {
           <br></br>
           {this.renderSort()}
           <br></br>
-          {this.renderFilter()}
+          {this.renderReadingStatusFilter()}
+          <br></br>
+          {this.renderRatingFilter()}
           {books.map(book => {
             return (
               <div key={book.book_id} className="Booklist">
@@ -148,6 +167,9 @@ export default class UserBookList extends Component {
     let content
     if (this.props.error === {}) {
       content = <p className="Error">There was an error</p>
+    } 
+    if (this.props.books.length === 0) {
+      content = <p>You have no books! Click add book to add your first book.</p>
     } else {
       content = this.renderBooks()
     }

@@ -35,9 +35,9 @@ export default class UserBook extends Component {
       })
   }
 
-  componentWillUnmount() {
-    this.props.setError(null)
-  }
+  // componentWillUnmount() {
+  //   this.props.setError(null)
+  // }
 
   //consider making this a presentational component-- only takes generated data in as props
   renderBooks() {

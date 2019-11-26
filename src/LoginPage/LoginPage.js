@@ -10,8 +10,10 @@ export default class LoginPage extends Component {
   }
 
   handleLoginSuccess = (user_id) => {
+    console.log(user_id)
     const { history } = this.props
     this.props.setUserId(user_id)
+    this.props.fetchBooks();
     history.push(`/users/${user_id}`)
   }
 

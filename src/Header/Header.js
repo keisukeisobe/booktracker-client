@@ -11,7 +11,8 @@ export default class Header extends Component {
 
   handleLogoutClick = () => {
     TokenService.clearAuthToken()
-    this.props.setLoginStatus();
+    this.props.setLoginStatus()
+    this.props.clearState();
   }
 
   renderLogoutLink() {
