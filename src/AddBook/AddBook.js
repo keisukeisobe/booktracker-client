@@ -9,8 +9,9 @@ export default class AddBook extends Component {
     }
   }
 
-  handleAddBookSuccess = user => {
+  handleAddBookSuccess = book_id => {
     const { history } = this.props
+    //this.props.fetchBooks()
     history.push(`/users/${this.props.userId}`)
   }
 
@@ -20,6 +21,7 @@ export default class AddBook extends Component {
     const author = event.target.author;
     const description = event.target.description;
     const maxpagecount = event.target.maxpagecount;
+    let response = null;
     fetch(`${config.API_ENDPOINT}/users/${this.props.userId}`, {
       method: 'POST',
       headers: {
@@ -40,12 +42,16 @@ export default class AddBook extends Component {
           return res.json();
         }
       })
-      .then( () => {
+      .then( (res) => {
+        response = res
+        return this.props.fetchBooks()
+      })
+      .then ( () => {
         title.value = '';
         author.value = '';
         description.value = '';
         maxpagecount.value = '';
-        this.handleAddBookSuccess();
+        this.handleAddBookSuccess(response.book_id)
       })
   }
 

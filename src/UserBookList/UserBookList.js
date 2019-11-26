@@ -17,12 +17,9 @@ export default class UserBookList extends Component {
   componentDidMount() {
     const userId = this.props.match.params.user_id;
     this.props.setUserId(userId);
-    this.setState({displayBooks: this.state.book})
+    this.setState({displayBooks: this.state.books})
+    this.props.fetchBooks()
   }
-
-  // componentWillUnmount() {
-  //   this.props.setError(null)
-  // }
 
   handleSortClick = (event) => {
     const newBooks = [...this.props.books]
@@ -93,7 +90,7 @@ export default class UserBookList extends Component {
       rating2: 2,
       rating3: 3,
       rating4: 4,
-      rating5: 5
+      rating5: 5,
     }
     this.setState({ratingFilter: ratingToNumber[event.target.value]})
   }
@@ -103,11 +100,13 @@ export default class UserBookList extends Component {
       <>
         <label htmlFor="ratingFilter">Rating: </label>
         <select name="ratingFilter" value={this.state.filter} id="ratingFilter" onChange={this.handleRatingFilterClick}>
-          <option value="rating0">No Filter</option>
+          <option value="allrating">No Filter</option>
           <option value="rating5">Rating: 5</option>
           <option value="rating4">Rating: 4</option>
           <option value="rating3">Rating: 3</option>
           <option value="rating2">Rating: 2</option>
+          <option value="rating1">Rating: 1</option>
+          <option value="rating0">No Rating</option>
         </select>
       </>
     )
@@ -132,7 +131,7 @@ export default class UserBookList extends Component {
 
   renderBooks() {
     let books = this.state.books
-    if(this.state.ratingFilter > 0){
+    if(this.state.ratingFilter){
       books = books.filter(book => book.rating === this.state.ratingFilter)
     }
     if(this.state.readingStatusFilter){

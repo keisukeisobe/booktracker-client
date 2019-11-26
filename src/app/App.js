@@ -24,7 +24,8 @@ class App extends Component {
   }
 
   fetchBooks = () => {
-    fetch(`${config.API_ENDPOINT}/users/${this.state.userId}/`, {
+    console.log('fetchBooks')
+    return fetch(`${config.API_ENDPOINT}/users/${this.state.userId}/`, {
       headers: {
         'authorization': `bearer ${TokenService.getAuthToken()}`
       },
@@ -48,9 +49,7 @@ class App extends Component {
           }
           return 0;
         })
-        this.setState( {books: newBooks})
-        this.setState( {booksNumber: newBooks.length})
-        this.setState( {booksLoaded: true})
+        this.setState( {books: newBooks, booksNumber: newBooks.length, booksLoaded: true})
       })
   }
 
@@ -129,9 +128,9 @@ class App extends Component {
             <Route exact path={'/login'} render={props => (TokenService.hasAuthToken() ? <LandingPage {...props} />: <LoginPage fetchBooks={this.fetchBooks} userId={this.state.userId} setUserId={this.setUserId} {...props}/>)}/>
             <Route exact path={'/demo'} render={props => (TokenService.hasAuthToken() ? <LandingPage {...props} />: <DemoPage userId={this.state.userId} setUserId={this.setUserId} {...props}/>)}/>
             {/* How to differentiate between new users and async fetch? */}
-            <Route exact path={'/users/:user_id'} render={props => (TokenService.hasAuthToken() ? this.state.booksLoaded ? <UserBookList {...props} books={this.state.books} userId={this.state.userId} setBooks={this.setBooks} setUserId={this.setUserId} setError={this.setError} error={this.state.error}/> : <p>Loading...</p> : <Redirect to = {'/login'}/> )}/>
-            <Route exact path={'/users/:user_id/books/:book_id'} render={props => (TokenService.hasAuthToken() ? <UserBook {...props} books={this.state.books} userId={this.state.userId} setBooks={this.setBooks} setUserId={this.setUserId} setError={this.setError} error={this.state.error}/> : <Redirect to = {'/login'}/>)}/>
-            <Route exact path={'/users/:user_id/add-book'} render={props => (TokenService.hasAuthToken() ? <AddBook {...props} books={this.state.books} userId={this.state.userId} setBooks={this.setBooks} setError={this.setEror} error={this.state.error}/> : <Redirect to={'/login'}/>)}/>
+            <Route exact path={'/users/:user_id'} render={props => (TokenService.hasAuthToken() ? this.state.booksLoaded ? <UserBookList {...props} fetchBooks={this.fetchBooks} books={this.state.books} userId={this.state.userId} setBooks={this.setBooks} setUserId={this.setUserId} setError={this.setError} error={this.state.error}/> : <p>Loading...</p> : <Redirect to = {'/login'}/> )}/>
+            <Route exact path={'/users/:user_id/books/:book_id'} render={props => (TokenService.hasAuthToken() ? <UserBook {...props} books={this.state.books} fetchBooks={this.fetchBooks} userId={this.state.userId} setBooks={this.setBooks} setUserId={this.setUserId} setError={this.setError} error={this.state.error}/> : <Redirect to = {'/login'}/>)}/>
+            <Route exact path={'/users/:user_id/add-book'} render={props => (TokenService.hasAuthToken() ? <AddBook {...props} fetchBooks={this.fetchBooks} books={this.state.books} userId={this.state.userId} setBooks={this.setBooks} setError={this.setEror} error={this.state.error}/> : <Redirect to={'/login'}/>)}/>
             <Route exact path={'/users/:user_id/profile'} render={props => (TokenService.hasAuthToken() ? <UserProfile {...props} books={this.state.books} userId={this.state.userId} setBooks={this.setBooks} setUserId={this.setUserId} setError={this.setError} error={this.state.error}/> : <Redirect to = {'/login'}/> )}/>
           </Switch>
         </main>

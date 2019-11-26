@@ -33,13 +33,9 @@ export default class UserBook extends Component {
       .then(books => {
         this.setState({books})
       })
+      .then( () => this.props.fetchBooks())
   }
 
-  // componentWillUnmount() {
-  //   this.props.setError(null)
-  // }
-
-  //consider making this a presentational component-- only takes generated data in as props
   renderBooks() {
     const userId = this.props.userId
     const bookId = this.props.match.params.book_id
@@ -52,7 +48,7 @@ export default class UserBook extends Component {
         <>
           <div className="Booklist">
             <Book key={book.id} book={book} userId={userId} details={true}/>
-            <UpdateBookForm key={book.id} book={book} userId={userId}/>
+            <UpdateBookForm key={book.id} book={book} userId={userId} fetchBooks={this.props.fetchBooks}/>
           </div>
         </>
       )
@@ -63,7 +59,8 @@ export default class UserBook extends Component {
     let content
     if (this.props.error === {}) {
       content = <p className="Error">There was an error</p>
-    } else {
+    } 
+    if (this.state.books){
       content = this.renderBooks();
     }
     return content

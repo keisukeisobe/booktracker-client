@@ -23,11 +23,11 @@ class UpdateBookForm extends Component {
       push: () => {}
     }
   }
+
   handlePatchBookSuccess = user => {
     const history = this.props.history
     history.push('/temp')
     history.goBack()
-    //history.push(`/users/${this.props.userId}/books/${this.props.book.book_id}`)
   }
 
   handleSubmit = event => {
@@ -58,6 +58,7 @@ class UpdateBookForm extends Component {
         if(!res.ok) {
           return res.json().then(e => Promise.reject(e));
         }
+        return this.props.fetchBooks()
       })
       .then( () => {
         rating.value = '';
@@ -94,7 +95,7 @@ class UpdateBookForm extends Component {
         <div className="reading_status">
           <label htmlFor="reading_status">Reading Status:</label>
             <select onChange={e=>this.handleChange(e, false)}name="reading_status">
-              <option value="inProgress">In Progress</option>
+              <option value="in progress">In Progress</option>
               <option value="completed">Completed</option>
               <option value="dnf">Did Not Finish</option>
             </select>
