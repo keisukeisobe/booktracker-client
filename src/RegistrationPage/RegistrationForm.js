@@ -61,7 +61,7 @@ export default class RegistrationForm extends Component {
           </label>
           <input
             name='email'
-            type='text'
+            type='email'
             required
             id='RegistrationFormEmail'>
           </input>

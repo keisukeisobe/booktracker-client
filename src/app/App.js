@@ -24,7 +24,6 @@ class App extends Component {
   }
 
   fetchBooks = () => {
-    console.log('fetchBooks')
     return fetch(`${config.API_ENDPOINT}/users/${this.state.userId}/`, {
       headers: {
         'authorization': `bearer ${TokenService.getAuthToken()}`

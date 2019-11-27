@@ -6,16 +6,8 @@ import { withRouter } from "react-router";
 class UpdateBookForm extends Component {
   state = {
     open: false,
-    content: this.props.book.content,
-    rating: this.props.book.rating,
-    plot: this.props.book.plot,
-    prose: this.props.book.prose,
-    characters: this.props.book.characters,
-    worldbuilding: this.props.book.worldbuilding,
-    theme: this.props.book.theme,
-    pagecount: this.props.book.pagecount,
-    maxpagecount: this.props.book.maxpagecount,
-    error: null
+    error: null,
+    ...this.props.book
   }
 
   static defaultProps = {
@@ -94,8 +86,8 @@ class UpdateBookForm extends Component {
       <form className="PatchBookForm" onSubmit={this.handleSubmit}>
         <div className="reading_status">
           <label htmlFor="reading_status">Reading Status:</label>
-            <select onChange={e=>this.handleChange(e, false)}name="reading_status">
-              <option value="in progress">In Progress</option>
+            <select onChange={e=>this.handleChange(e, false)} value={this.state.status} name="reading_status">
+              <option value="in progress" >In Progress</option>
               <option value="completed">Completed</option>
               <option value="dnf">Did Not Finish</option>
             </select>

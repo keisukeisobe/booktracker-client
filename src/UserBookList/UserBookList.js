@@ -112,11 +112,6 @@ export default class UserBookList extends Component {
     )
   }
 
-  handleFilter = (event) => {
-    this.handleReadingStatusFilterClick(event)
-    this.handleRatingFilterClick(event)
-  }
-
   renderSubHeader() {
     return (
       <>
