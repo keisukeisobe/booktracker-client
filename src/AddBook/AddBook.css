@@ -1,6 +1,15 @@
+.add-book-form {
+  padding: 1% 2% 1% 2%;
+  margin: 5% 5%;
+  border-radius: 15px;
+  border: 1px;
+  border-width: 1px;
+  border-color: turquoise;
+  background-color: turquoise;
+  text-align: center;
+}
 
-
-.grid-container {
+.grid-container-add-book {
   display: grid;
   grid-template-columns: 40% 60%;
   margin-top: 3%;
@@ -44,15 +53,4 @@
 	font-size: 12px;
 	font-weight: bold;
 	letter-spacing: 1px;
-}
-
-.AddBookForm {
-  padding: 1% 2% 1% 2%;
-  margin: 5% 5%;
-  border-radius: 15px;
-  border: 1px;
-  border-width: 1px;
-  border-color: turquoise;
-  background-color: turquoise;
-  text-align: center;
 }

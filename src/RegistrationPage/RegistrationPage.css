@@ -1,12 +1,13 @@
-.Register-h2 {
+.register-h2 {
   color: white;
   text-align: center;
   margin: 0;
   padding: 6%
 }
 
-.Silly-Text {
+.silly-text {
   color: white;
   text-align: center;
-  padding: 15% 15%;
+  padding: 20% 20%;
+  margin: 0;
 }

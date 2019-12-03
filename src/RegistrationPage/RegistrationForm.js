@@ -39,7 +39,7 @@ export default class RegistrationForm extends Component {
   render() {
     return (
       <form
-        className='RegistrationForm'
+        className='registration-form'
         onSubmit={this.handleSubmit}
       >
         <div role='alert'>
@@ -48,7 +48,7 @@ export default class RegistrationForm extends Component {
         <div className='Username'>
           <label htmlFor='RegistrationFormUsername'>
           </label>
-          <input className='Register-Username'
+          <input className='register-username'
             name='username'
             type='text'
             required
@@ -59,7 +59,7 @@ export default class RegistrationForm extends Component {
         <div className='Email'>
           <label htmlFor='RegistrationFormEmail'>
           </label>
-          <input className='Register-Email'
+          <input className='register-email'
             name='email'
             type='email'
             required
@@ -70,7 +70,7 @@ export default class RegistrationForm extends Component {
         <div className='Password'>
           <label htmlFor='RegistrationFormPassword'>
           </label>
-          <input className='Register-Password'
+          <input className='register-password'
             name='password'
             type='password'
             required
@@ -78,7 +78,7 @@ export default class RegistrationForm extends Component {
             id='RegistrationFormPassword'>
           </input>
         </div>
-        <button className='Register-Button' type='submit'>
+        <button className='register-button' type='submit'>
           Register
         </button>
       </form>

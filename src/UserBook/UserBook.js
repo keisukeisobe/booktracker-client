@@ -41,12 +41,12 @@ export default class UserBook extends Component {
     const bookId = this.props.match.params.book_id
     const newBooks = [...this.state.books]
     if (this.state.books.length === 0 ){
-      return <p>Loading...</p>
+      return <p className='loading-p'>Loading...</p>
     } else {
       const book = newBooks.filter(book => Number(book.book_id) === Number(bookId))[0]
       return (
         <>
-          <div className="Booklist">
+          <div className="booklist">
             <Book key={book.id} book={book} userId={userId} details={true}/>
             <UpdateBookForm key={book.id} book={book} userId={userId} fetchBooks={this.props.fetchBooks}/>
           </div>

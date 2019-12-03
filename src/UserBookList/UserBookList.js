@@ -50,7 +50,7 @@ export default class UserBookList extends Component {
 
   renderSort() {
     return (
-      <div className='Filter-Container'>
+      <div className='filter-container'>
         <label className='sort-label' htmlFor="sort">Sort by: </label>
         <select className='sort-select' name="sort" value={this.state.sort} id="sort" onChange={this.handleSortClick}>
           <option value="title">Title</option>
@@ -72,7 +72,7 @@ export default class UserBookList extends Component {
 
   renderReadingStatusFilter() {
     return (
-      <div className='Filter-Container'>
+      <div className='filter-container'>
         <label className='sort-label' htmlFor="readingStatusFilter">Reading Status: </label>
         <select className='sort-select' name="readingStatusFilter" value={this.state.filter} id="readingStatusFilter" onChange={this.handleReadingStatusFilterClick}>
           <option value="blankStatus">No Filter</option>
@@ -98,7 +98,7 @@ export default class UserBookList extends Component {
 
   renderRatingFilter(){
     return (
-      <div className='Filter-Container'>
+      <div className='filter-container'>
         <label className='sort-label' htmlFor="ratingFilter">Rating: </label>
         <select className='sort-select' name="ratingFilter" value={this.state.filter} id="ratingFilter" onChange={this.handleRatingFilterClick}>
           <option value="allrating">No Filter</option>
@@ -116,12 +116,12 @@ export default class UserBookList extends Component {
   renderSubHeader() {
     return (
       <>
-        <h2 className='UserBookList-Header'>My Books</h2>
-          <Link className='AddBook-Link'
+        <h2 className='user-book-list-header'>My Books</h2>
+          <Link className='add-book-link'
             to={`/users/${this.props.userId}/add-book`}>
             <i className="fas fa-plus fa-2x"></i>
             <br></br>
-            <p className='Log-Logo-Text'>Add Book</p>
+            <p className='log-logo-text'>Add Book</p>
           </Link>  
       </>
     )
@@ -140,8 +140,8 @@ export default class UserBookList extends Component {
       return <p className='Error'>Loading...</p>
     } else {
       return (
-        <div className='UserBookList-Main'>
-          <div className='Filter-Sort'>
+        <div className='user-book-list-Main'>
+          <div className='filter-sort'>
             {this.renderSubHeader()}
             {this.renderSort()}
             {this.renderReadingStatusFilter()}
@@ -149,7 +149,7 @@ export default class UserBookList extends Component {
           </div>
           {books.map(book => {
             return (
-              <div key={book.book_id} className="Booklist">
+              <div key={book.book_id} className="booklist">
                 <Book book={book} userId={userId} details={false}/>
               </div>
             )
@@ -162,10 +162,10 @@ export default class UserBookList extends Component {
   render() {
     let content
     if (this.props.error === {}) {
-      content = <p className="Error">There was an error</p>
+      content = <p className="error">There was an error</p>
     } 
     if (this.props.books.length === 0) {
-      content = <p className="NoBookError">You have no books! Click add book to add your first book.</p>
+      content = <p className="no-book-error">You have no books! Go to My Books then click Add Book to add your first book.</p>
     } else {
       content = this.renderBooks()
     }

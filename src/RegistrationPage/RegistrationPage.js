@@ -20,13 +20,13 @@ export default class RegistrationPage extends Component {
     console.log(rng)
     let content;
     if (rng===1){
-      content = <p className='Silly-Text'>What are you reading today?</p>
+      content = <p className='silly-text'>What are you reading today?</p>
     } 
     if (rng===2){
-      content = <p className='Silly-Text'>What are you reading today?</p>
+      content = <p className='silly-text'>What are you reading today?</p>
     }
     if (rng===3){
-      content = <p className='Silly-Text'>What are you reading today?</p>
+      content = <p className='silly-text'>What are you reading today?</p>
     }
     return (
       <>
@@ -38,8 +38,8 @@ export default class RegistrationPage extends Component {
   render() {
     return (
       <>
-        <div className='RegistrationPage'>
-          <h2 className="Register-h2">Register</h2>
+        <div className='registration-page'>
+          <h2 className="register-h2">Register</h2>
           <RegistrationForm
             onRegistrationSuccess={this.handleRegistrationSuccess}
           />

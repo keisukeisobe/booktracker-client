@@ -30,20 +30,20 @@ export default class Book extends Component {
       rating.push(<i key={i} className="active fa fa-star" aria-hidden="true"></i>)
     }
     let content = (
-      <div className="Details">
-        <h2 className='Book-Title'>
+      <div className="details">
+        <h2 className='book-title'>
           {book.title}
         </h2>
         <div className='row'>
           <div className='column-left'>
-            <p className='Book-Details'>Status: </p>
-            <p className='Book-Details'>Progress: </p>
-            {!this.props.details && <p className='Book-Details'>Personal Rating: </p>}
+            <p className='book-details'>Status: </p>
+            <p className='book-details'>Progress: </p>
+            {!this.props.details && <p className='book-details'>Personal Rating: </p>}
           </div>
           <div className='column-right'>
-            <p className='Book-Details'> {(this.toProperCase(book.status))}</p>
-            {this.props.details ? <p className='Book-Details'> {book.pagecount}/{book.maxpagecount} pages</p>:<p className='Book-Details'>{(100*book.percent).toPrecision(3)}%</p>}
-            {!this.props.details && <p className='Book-Details'>{rating}</p>}
+            <p className='book-details'> {(this.toProperCase(book.status))}</p>
+            {this.props.details ? <p className='book-details'> {book.pagecount}/{book.maxpagecount} pages</p>:<p className='book-details'>{(100*book.percent).toPrecision(3)}%</p>}
+            {!this.props.details && <p className='book-details'>{rating}</p>}
           </div>
         </div>
         {this.props.details && <RadarChart captions={captions} data={bookData} options={{scales: 5, zoomDistance: 1.32, captionMargin: 10, captionProps: ()=> ({fontSize: 16, textAnchor: 'middle', fontWeight: 'bold', fontFamily: 'sans-serif'})}}size={360}/>}

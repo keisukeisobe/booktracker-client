@@ -84,8 +84,8 @@ class UpdateBookForm extends Component {
 
   renderForm() {
     return (
-      <form className="PatchBookForm" onSubmit={this.handleSubmit}>
-        <div className='grid-container'>
+      <form className="patch-book-form" onSubmit={this.handleSubmit}>
+        <div className='grid-container-update'>
           <label className='reading-status-label' htmlFor="reading_status">Reading Status:</label>
           <select className='reading-status-select' onChange={e=>this.handleChange(e, false)} value={this.state.reading_status} name="reading_status">
             <option value="in progress" >In Progress</option>
@@ -102,7 +102,7 @@ class UpdateBookForm extends Component {
           <textarea className="content-textarea" name="content" value={this.state.content} onChange={this.handleChange} />
         </label>
         
-        <div className='grid-container'>
+        <div className='grid-container-update'>
           <label className='detailed-text'>Personal Rating:</label>
             <div className="star-rating rating">
               <input id="rating5" type="radio" name="rating" value="5" checked={this.state.rating===5} onChange={e => this.handleChange(e, true)} required></input>

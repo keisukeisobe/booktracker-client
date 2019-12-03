@@ -1,4 +1,4 @@
-.Login-Page-Form {
+.login-page-form {
   background-color: #081443;
   color: white;
   text-align: center;
@@ -7,13 +7,13 @@
   border-color: turquoise;
 }
 
-.Login-Header {
+.login-header {
   margin: 0;
   padding: 6%;
   color: white
 }
 
-.Silly-Text {
+.silly-text {
   color: white;
   text-align: center;
   padding: 20% 20%;

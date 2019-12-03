@@ -1,17 +1,17 @@
-.Header {
+.banner {
   text-align: center;
   margin: 0;
   padding: 0;
   background-color: #081443;
 }
 
-.Header-h1 {
+.header-h1 {
   margin: 0;
   padding: 3%;
   background-color: turquoise;
 }
 
-.Header-h2 {
+.header-h2 {
   margin: 0;
   padding: 3%;
   color: white;
@@ -20,7 +20,7 @@
   border-color: turquoise
 }
 
-.HeaderLoggedOut, .HeaderLoggedIn {
+.header-logged-in, .header-logged-out {
   padding: 3% 0;
   display: flex;
   align-items: normal;
@@ -34,13 +34,13 @@
   padding-top: 8%
 }
 
-.Log-Link {
+.log-link {
   width: 33%;
   text-decoration: none;
   color: whitesmoke;
 }
 
-.Log-Logo-Text {
+.log-logo-text {
   padding: 0;
   margin: 0;
   line-height: 1.6;

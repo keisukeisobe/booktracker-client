@@ -152,19 +152,19 @@ export default class UserProfile extends Component {
   render() {
     if (this.state.themeData.length > 0){
       return (
-        <div className='UserProfile'>
+        <div className='user-profile'>
           <div className='user-statistics'>
             <h2 className='profile-h2'>My Profile</h2>
             <h3 className='profile-h3'>User Statistics</h3>
-            <div className='grid-container'>
+            <div className='grid-container-profile'>
               <span className='user-profile-p-left'>Books Finished:</span>
               <span className='user-profile-p-right'>{this.state.finished}</span>
-              <span className='user-profile-p-left'>Books in progress:</span>
+              <span className='user-profile-p-left'>Books In Progress:</span>
               <span className='user-profile-p-right'>{this.state.inProgress}</span>
               <span className='user-profile-p-left'>Books DNF'd:</span>
               <span className='user-profile-p-right'>{this.state.didNotFinish}</span>
               <span className='user-profile-p-left'>Average Rating:</span>
-              <span className='user-profile-p-right'>{this.state.average}</span>
+              <span className='user-profile-p-right'>{this.state.average.toPrecision(2)}</span>
             </div>
           </div>
           <h3 className='user-profile-h3'>Correlation of Various Factors to Overall Rating</h3>
@@ -182,7 +182,7 @@ export default class UserProfile extends Component {
         </div>
       )
     } else {
-      return <p>Loading...</p>
+      return <p className='loading-p'>Loading...</p>
     }
   }
 }

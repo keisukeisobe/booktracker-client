@@ -22,13 +22,13 @@ export default class LoginPage extends Component {
     console.log(rng)
     let content;
     if (rng===1){
-      content = <p className='Silly-Text'>What are you reading today?</p>
+      content = <p className='silly-text'>What are you reading today?</p>
     } 
     if (rng===2){
-      content = <p className='Silly-Text'>What are you reading today?</p>
+      content = <p className='silly-text'>What are you reading today?</p>
     }
     if (rng===3){
-      content = <p className='Silly-Text'>What are you reading today</p>
+      content = <p className='silly-text'>What are you reading today?</p>
     }
     return (
       <>
@@ -40,8 +40,8 @@ export default class LoginPage extends Component {
   render() {
     return (
       <>
-        <div className='Login-Page-Form'>
-          <h2 className='Login-Header'>Login</h2>
+        <div className='login-page-form'>
+          <h2 className='login-header'>Login</h2>
           <LoginForm
             onLoginSuccess={this.handleLoginSuccess}
           />

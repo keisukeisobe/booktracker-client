@@ -1,12 +1,12 @@
-.Book-Title, .Book-Details {
+.book-title, .book-details {
   color: black;
 }
 
-.Book-Title {
+.book-title {
   margin: 2% 0% 0% 0%
 }
 
-.Details {
+.details {
   text-align: center;
 }
 

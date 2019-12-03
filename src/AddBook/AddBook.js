@@ -76,9 +76,9 @@ export default class AddBook extends Component {
 
   render() {
     return (
-      <form className="AddBookForm" onSubmit={this.handleSubmit}>
+      <form className="add-book-form" onSubmit={this.handleSubmit}>
         <h2 className='add-book-h2'>Add Book</h2>
-        <div className='grid-container'>
+        <div className='grid-container-add-book'>
           <label className='add-book-label' htmlFor="title"> Title:</label>
           <input className='add-book-input' type="text" name="title" id="title" value={this.state.title} onChange={e=>this.handleChange(e, false)} required></input>
           <label className='add-book-label' htmlFor='author'> Author: </label>

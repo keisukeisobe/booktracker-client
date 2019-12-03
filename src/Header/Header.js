@@ -18,25 +18,25 @@ export default class Header extends Component {
 
   renderLogoutLink() {
     return (
-      <div className='HeaderLoggedIn'>
-        <Link className='Log-Link'
+      <div className='header-logged-in'>
+        <Link className='log-link'
           to={`/users/${this.props.userId}/`}>
           <i className="fas fa-book fa-3x" ></i>
           <br></br>
-          <p className="Log-Logo-Text">My Books</p>
+          <p className="log-logo-text">My Books</p>
         </Link>
-        <Link className='Log-Link'
+        <Link className='log-link'
           to={`/users/${this.props.userId}/profile`}>
           <i className="fas fa-user fa-3x"></i>
           <br></br>
-          <p className="Log-Logo-Text">My Profile</p>
+          <p className="log-logo-text">My Profile</p>
         </Link>
-        <Link className='Log-Link'
+        <Link className='log-link'
           onClick={this.handleLogoutClick}
           to='/'>
           <i className="fas fa-sign-out-alt fa-3x"></i>
           <br></br>
-          <p className="Log-Logo-Text">Log Out</p>
+          <p className="log-logo-text">Log Out</p>
         </Link>      
       </div>
     )
@@ -44,24 +44,24 @@ export default class Header extends Component {
 
   renderLoginLink() {
     return (
-      <div className='HeaderLoggedOut'>
-        <Link className='Log-Link'
+      <div className='header-logged-out'>
+        <Link className='log-link'
           to='/register'>
           <i className="fas fa-user-plus fa-3x"></i>
           <br></br>
-          <p className='Log-Logo-Text'>Register</p>
+          <p className='log-logo-text'>Register</p>
         </Link>
-        <Link className='Log-Link'
+        <Link className='log-link'
           to='/login'>
           <i className="fas fa-sign-in-alt fa-3x"></i>
           <br></br>
-          <p className='Log-Logo-Text'>Log In</p>
+          <p className='log-logo-text'>Log In</p>
         </Link>
-        <Link className='Log-Link'
+        <Link className='log-link'
           to='/demo'>
           <i className="fas fa-question fa-3x"></i>
           <br></br>
-          <p className='Log-Logo-Text'>Demo</p>
+          <p className='log-logo-text'>Demo</p>
         </Link>
       </div>
     )
@@ -70,10 +70,10 @@ export default class Header extends Component {
   renderWelcome() {
     return (
       <>
-        <h1 className='Header-h1'>
+        <h1 className='header-h1'>
           BookTracker
         </h1>
-        <h2 className='Header-h2'>
+        <h2 className='header-h2'>
           Welcome!
         </h2>
       </>
@@ -82,7 +82,7 @@ export default class Header extends Component {
 
   render() {
     return (
-      <nav className='Header'>
+      <nav className='banner'>
         {!this.props.loginStatus && this.renderWelcome()}
         {this.props.loginStatus ? this.renderLogoutLink() : this.renderLoginLink()}
       </nav>
