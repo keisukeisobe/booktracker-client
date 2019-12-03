@@ -4,7 +4,6 @@ import TokenService from '../services/token-service'
 import Book from '../Book/Book'
 import UpdateBookForm from '../UpdateBookForm/UpdateBookForm'
 
-
 export default class UserBook extends Component {
   state = {
     books: this.props.books
