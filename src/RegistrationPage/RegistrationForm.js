@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import config from '../config.js'
+import './RegistrationForm.css'
 
 export default class RegistrationForm extends Component {
   static defaultProps = {
@@ -46,38 +47,38 @@ export default class RegistrationForm extends Component {
         </div>
         <div className='Username'>
           <label htmlFor='RegistrationFormUsername'>
-            Username 
           </label>
-          <input
+          <input className='Register-Username'
             name='username'
             type='text'
             required
+            placeholder='username'
             id='RegistrationFormUsername'>
           </input>
         </div>
-        <div className='email'>
+        <div className='Email'>
           <label htmlFor='RegistrationFormEmail'>
-            Email 
           </label>
-          <input
+          <input className='Register-Email'
             name='email'
             type='email'
             required
+            placeholder='email'
             id='RegistrationFormEmail'>
           </input>
         </div>
-        <div className='password'>
+        <div className='Password'>
           <label htmlFor='RegistrationFormPassword'>
-            Password
           </label>
-          <input
+          <input className='Register-Password'
             name='password'
             type='password'
             required
+            placeholder='password'
             id='RegistrationFormPassword'>
           </input>
         </div>
-        <button type='submit'>
+        <button className='Register-Button' type='submit'>
           Register
         </button>
       </form>

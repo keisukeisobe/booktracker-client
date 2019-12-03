@@ -1,0 +1,32 @@
+.LoginForm {
+  background-color: #081443;
+  color: white;
+  padding-bottom: 2%;
+}
+
+.InputUserName, .InputPassword {
+  margin: 3%;
+  padding-left: 3%;
+  border: none;
+  background-color: lightgrey;
+  line-height: 2.5;
+  width: 50%;
+}
+
+::placeholder {
+  color: rgb(36, 24, 24);
+}
+
+.SubmitLoginButton {
+  padding: 3% 10%;
+  margin: 3%;
+	border-radius: 15px;
+  border: 1px;
+  border-width: 1px;
+  border-color: turquoise;
+	background-color: turquoise;
+	color: black;
+	font-size: 12px;
+	font-weight: bold;
+	letter-spacing: 1px;
+}

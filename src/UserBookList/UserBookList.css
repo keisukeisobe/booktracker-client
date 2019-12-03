@@ -1,0 +1,68 @@
+.Error, .NoBookError {
+  color: white;
+}
+
+.UserBookList-Header {
+  color: white;
+  margin: 0;
+  padding: 0;
+}
+
+.UserBookList-Main {
+  color: white;
+  text-align: center;
+}
+
+.fas {
+  padding: 0;
+  padding-top: 1%;
+  margin: 0;
+}
+
+.Filter-Container {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sort-label {
+  width: 30%;
+  text-align: right;
+  margin: 1%;
+}
+
+.sort-select {
+  width: 30%
+}
+
+a {
+  text-decoration: none;
+  color: white
+}
+
+.Filter-Sort {
+  height: 15%;
+  border-bottom: solid;
+  border-width: 2px;
+  border-color: turquoise;
+  padding: 0;
+  margin: 0;
+}
+
+select {
+  padding: 3px;
+  margin: 3px;
+}
+
+.Booklist {
+  padding: 1% 2% 1% 2%;
+  margin: 5% 5%;
+  border-radius: 15px;
+  border: 1px;
+  border-width: 1px;
+  border-color: turquoise;
+  background-color: turquoise;
+  text-align: center;
+}

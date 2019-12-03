@@ -53,7 +53,9 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.setState({userId: jwtDecode(TokenService.getAuthToken()).user_id})
+    if (this.state.loginStatus){
+      this.setState({userId: jwtDecode(TokenService.getAuthToken()).user_id})
+    }
     if (this.state.loginStatus && !this.state.booksLoaded){
       fetch(`${config.API_ENDPOINT}/users/${jwtDecode(TokenService.getAuthToken()).user_id}/`, {
         headers: {

@@ -1,0 +1,48 @@
+.Header {
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  background-color: #081443;
+}
+
+.Header-h1 {
+  margin: 0;
+  padding: 3%;
+  background-color: turquoise;
+}
+
+.Header-h2 {
+  margin: 0;
+  padding: 3%;
+  color: white;
+  border-width: .3px;
+  border-bottom: solid;
+  border-color: turquoise
+}
+
+.HeaderLoggedOut, .HeaderLoggedIn {
+  padding: 3% 0;
+  display: flex;
+  align-items: normal;
+  justify-content: space-evenly;
+  border-width: .3px;
+  border-bottom: solid;
+  border-color: turquoise;
+}
+
+.fas {
+  padding-top: 8%
+}
+
+.Log-Link {
+  width: 33%;
+  text-decoration: none;
+  color: whitesmoke;
+}
+
+.Log-Logo-Text {
+  padding: 0;
+  margin: 0;
+  line-height: 1.6;
+  color: white
+}

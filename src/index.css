@@ -1,10 +1,28 @@
+html {
+  height: 100%
+}
+
 body {
-  margin: 3%;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+  font-family: 'Alatsi', sans-serif;
+  /* font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+    sans-serif; */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  background-color: #081443;
+  height: 100%
+}
+
+#root {
+  height: 100%
+}
+
+.App {
+  height: 100%
+}
+.App-Main {
+  height: 100%
 }
 
 code {

@@ -1,0 +1,28 @@
+.Book-Title, .Book-Details {
+  color: black;
+}
+
+.Book-Title {
+  margin: 2% 0% 0% 0%
+}
+
+.Details {
+  text-align: center;
+}
+
+.row {
+  display: flex
+}
+
+.column-left {
+  width: 49%;
+  text-align: right;
+  padding: 1%;
+  font-weight: bold;
+}
+
+.column-right {
+  width: 49%;
+  text-align: left;
+  padding: 1%
+}

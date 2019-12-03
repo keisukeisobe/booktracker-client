@@ -1,0 +1,24 @@
+.UserProfile {
+  color: white;
+  text-align: center
+}
+
+.Profile-h2 {
+  color: white
+}
+
+.avg-rating-for-border {
+  padding-bottom: 3%;
+  border-bottom: solid;
+  border-width: 2px;
+  border-color: turquoise
+}
+
+svg {
+  background-color: turquoise;
+  border-radius: 15px;
+  border: 1px;
+  border-width: 1px;
+  border-color: turquoise;
+  background-color: turquoise;
+}

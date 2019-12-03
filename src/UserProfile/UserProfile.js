@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import config from '../config'
 import TokenService from '../services/token-service'
-import RadarChart from 'react-svg-radar-chart';
+import RadarChart from 'react-svg-radar-chart'
 import 'react-svg-radar-chart/build/css/index.css'
+import './UserProfile.css'
 const ss = require('simple-statistics')
 
 export default class UserProfile extends Component {
@@ -37,11 +38,13 @@ export default class UserProfile extends Component {
       })
       .then(books => {
         this.props.setBooks(books)
+        //should collapse
         this.setState({finished: this.props.books.filter(book => book.status === "completed").length});
         this.setState({inProgress: this.props.books.filter(book => book.status === "in progress").length});
         this.setState({didNotFinish: this.props.books.filter(book => book.status === "did not finish").length});
         this.setState({average: Number((this.props.books.reduce((total, next) => total + next.rating, 0) / this.props.books.length).toPrecision(3))})
-        this.setState({error: Number(ss.sampleStandardDeviation(this.props.books.map(book => book.rating)).toPrecision(2))})
+        this.setState({error: Number(ss.sampleStandardDeviation(this.props.books.map(book => book.rating)).toPrecision(3))})
+        //map once-- one loop instead of seven, create an object and store properties onto it or whatever
         const title = this.props.books.map(book => book.title);
         const rating = this.props.books.map(book => book.rating);
         const plot = this.props.books.map(book => book.plot);  
@@ -49,6 +52,7 @@ export default class UserProfile extends Component {
         const characters = this.props.books.map(book => book.characters);  
         const worldbuilding = this.props.books.map(book => book.worldbuilding);  
         const theme = this.props.books.map(book => book.theme);
+        //leave for last
         let bookOrder = {};
         let ratingData = [
           {
@@ -85,19 +89,19 @@ export default class UserProfile extends Component {
         let charCorr;
         let worldCorr;
         let themeCorr;
-    
+        //loop this-- just use an object? of the variable names
         if (rating.length >= 2 && plot.length >= 2){
           plotCorr = ss.sampleCorrelation(rating, plot).toPrecision(2)
         }
         if (rating.length >=2 && prose.length >=2){
           proseCorr = ss.sampleCorrelation(rating, prose).toPrecision(2)
         }
+        if (rating.length >=2 && worldbuilding.length >=2){
+          worldCorr = ss.sampleCorrelation(rating, worldbuilding).toPrecision(2)
+        }
         if (rating.length >=2 && characters.length >=2){
           charCorr = ss.sampleCorrelation(rating, characters).toPrecision(2)
 
-        }
-        if (rating.length >=2 && worldbuilding.length >=2){
-          worldCorr = ss.sampleCorrelation(rating, worldbuilding).toPrecision(2)
         }
         if (rating.length >=2 && theme.length >=2){
           themeCorr = ss.sampleCorrelation(rating, theme).toPrecision(2)
@@ -130,7 +134,8 @@ export default class UserProfile extends Component {
             worldData[0].meta={color: 'purple'}
             themeData[0].data[title[index]]=theme[index]/5
             themeData[0].meta={color: 'grey'}
-          }  
+          }
+          //collapse these into one
           this.setState({profileData: profileData})
           this.setState({captions: captions})
           this.setState({bookOrder})
@@ -147,26 +152,26 @@ export default class UserProfile extends Component {
   render() {
     if (this.state.themeData.length > 0){
       return (
-        <>
-          <h2>My Profile</h2>
+        <div className='UserProfile'>
+          <h2 className='Profile-h2'>My Profile</h2>
           <h3>User Statistics</h3>
           <p>Books Finished: {this.state.finished}</p>
           <p>Books in progress: {this.state.inProgress}</p>
           <p>Books DNF'd: {this.state.didNotFinish}</p>
-          <p>Average Rating: {this.state.average}+/-{this.state.error}</p>
+          <p className='avg-rating-for-border'>Average Rating: {this.state.average} +/- {this.state.error}</p>
           <h3>Correlation of Various Factors to Overall Rating</h3>
-          {this.state.profileData.length > 0 && Object.keys(this.state.captions).length > 0 && <RadarChart captions={this.state.captions} data={this.state.profileData} options={{scales: 5, captionProps: ()=> ({className: 'caption', fontSize: 16, textAnchor: 'middle', fontFamily: 'sans-serif'})}}size={450}/>}
+          {this.state.profileData.length > 0 && Object.keys(this.state.captions).length > 0 && <RadarChart captions={this.state.captions} data={this.state.profileData} options={{scales: 10, zoomDistance: 1.23, captionProps: ()=> ({fontSize: 16, textAnchor: 'middle', fontFamily: 'sans-serif'})}}size={300}/>}
           <h3>Personal Rating vs. Plot</h3>
-          {this.state.plotData.length > 0 && Object.keys(this.state.bookOrder).length > 0 && <RadarChart captions={this.state.bookOrder} data={this.state.plotData} options={{scales: 5, captions: false}}size={450}/>}
+          {this.state.plotData.length > 0 && Object.keys(this.state.bookOrder).length > 0 && <RadarChart captions={this.state.bookOrder} data={this.state.plotData} options={{scales: 5, captions: false, captionProps: ()=> ({fontSize: 16, textAnchor: 'middle', fontFamily: 'sans-serif'})}}size={300}/>}
           <h3>Personal Rating vs. Prose</h3>
-          {this.state.proseData.length > 0 && Object.keys(this.state.bookOrder).length > 0 && <RadarChart captions={this.state.bookOrder} data={this.state.proseData} options={{scales: 5, captions: false}}size={450}/>}
+          {this.state.proseData.length > 0 && Object.keys(this.state.bookOrder).length > 0 && <RadarChart captions={this.state.bookOrder} data={this.state.proseData} options={{scales: 5, captions: false, captionProps: ()=> ({fontSize: 16, textAnchor: 'middle', fontFamily: 'sans-serif'})}}size={300}/>}
           <h3>Personal Rating vs. Characters</h3>
-          {this.state.charData.length > 0 && Object.keys(this.state.bookOrder).length > 0 && <RadarChart captions={this.state.bookOrder} data={this.state.charData} options={{scales: 5, captions: false}}size={450}/>}
+          {this.state.charData.length > 0 && Object.keys(this.state.bookOrder).length > 0 && <RadarChart captions={this.state.bookOrder} data={this.state.charData} options={{scales: 5, captions: false, captionProps: ()=> ({fontSize: 16, textAnchor: 'middle', fontFamily: 'sans-serif'})}}size={300}/>}
           <h3>Personal Rating vs. Worldbuilding</h3>
-          {this.state.worldData.length > 0 && Object.keys(this.state.bookOrder).length > 0 && <RadarChart captions={this.state.bookOrder} data={this.state.worldData} options={{scales: 5, captions: false}}size={450}/>}
+          {this.state.worldData.length > 0 && Object.keys(this.state.bookOrder).length > 0 && <RadarChart captions={this.state.bookOrder} data={this.state.worldData} options={{scales: 5, captions: false, captionProps: ()=> ({fontSize: 16, textAnchor: 'middle', fontFamily: 'sans-serif'})}}size={300}/>}
           <h3>Personal Rating vs. Theme</h3>
-          {this.state.themeData.length > 0 && Object.keys(this.state.bookOrder).length > 0 && <RadarChart captions={this.state.bookOrder} data={this.state.themeData} options={{scales: 5, captions: false}}size={450}/>}
-        </>
+          {this.state.themeData.length > 0 && Object.keys(this.state.bookOrder).length > 0 && <RadarChart captions={this.state.bookOrder} data={this.state.themeData} options={{scales: 5, captions: false, captionProps: ()=> ({fontSize: 16, textAnchor: 'middle', fontFamily: 'sans-serif'})}}size={300}/>}
+        </div>
       )
     } else {
       return <p>Loading...</p>

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import config from '../config'
 import TokenService from '../services/token-service';
+import './AddBook.css'
 
 export default class AddBook extends Component {
   static defaultProps = {
@@ -58,27 +59,18 @@ export default class AddBook extends Component {
   render() {
     return (
       <form className="AddBookForm" onSubmit={this.handleSubmit}>
-        <div className="title">
-          <label htmlFor="title"> Title:
-            <input type="text" name="title" id="title" required></input>
-          </label>
+        <h2 className='add-book-h2'>Add Book</h2>
+        <div className='grid-container'>
+          <label className='add-book-label' htmlFor="title"> Title:</label>
+          <input className='add-book-input' type="text" name="title" id="title" required></input>
+          <label className='add-book-label' htmlFor='author'> Author: </label>
+          <input className='add-book-input' type='text' name="author" id="author" required></input>
+          <label className='add-book-label' htmlFor="description">Description:</label>
+          <input className='add-book-input' type="text" name="description" id="description" required></input>
+          <label className='add-book-label' htmlFor="maxpagecount">Pagecount:</label>
+          <input className='add-book-input' type="number" min="0" name="maxpagecount" id="maxpagecount" required></input>
         </div>
-        <div className='author'>
-          <label> Author: 
-            <input type='text' name="author" id="author" required></input>
-          </label>
-        </div>        
-        <div className="description">
-          <label htmlFor="description">Description:
-            <input type="text" name="description" id="description" required></input>
-          </label>
-        </div>
-        <div className="maxpagecount">
-          <label htmlFor="maxpagecount">Total Page Count:
-            <input type="number" min="0" name="maxpagecount" id="maxpagecount" required></input>
-          </label>
-        </div>
-        <button type='submit'>Submit</button>
+        <button className='add-book-button' type='submit'>Submit</button>
       </form>
     );
   }

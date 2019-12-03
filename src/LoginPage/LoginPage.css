@@ -1,0 +1,20 @@
+.Login-Page-Form {
+  background-color: #081443;
+  color: white;
+  text-align: center;
+  border-bottom: solid;
+  border-width: 2px;
+  border-color: turquoise;
+}
+
+.Login-Header {
+  margin: 0;
+  padding: 6%;
+  color: white
+}
+
+.Silly-Text {
+  color: white;
+  text-align: center;
+  padding: 20% 20%;
+}

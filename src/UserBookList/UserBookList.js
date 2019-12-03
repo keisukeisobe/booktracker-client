@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import Book from '../Book/Book'
+import './UserBookList.css'
 
 export default class UserBookList extends Component {
   state = {
@@ -49,13 +50,13 @@ export default class UserBookList extends Component {
 
   renderSort() {
     return (
-      <>
-        <label htmlFor="sort">Sort by: </label>
-        <select name="sort" value={this.state.sort} id="sort" onChange={this.handleSortClick}>
+      <div className='Filter-Container'>
+        <label className='sort-label' htmlFor="sort">Sort by: </label>
+        <select className='sort-select' name="sort" value={this.state.sort} id="sort" onChange={this.handleSortClick}>
           <option value="title">Title</option>
           <option value="rating">Rating</option>
         </select>
-      </>
+      </div>
     )
   }
 
@@ -71,15 +72,15 @@ export default class UserBookList extends Component {
 
   renderReadingStatusFilter() {
     return (
-      <>
-        <label htmlFor="readingStatusFilter">Reading Status: </label>
-        <select name="readingStatusFilter" value={this.state.filter} id="readingStatusFilter" onChange={this.handleReadingStatusFilterClick}>
+      <div className='Filter-Container'>
+        <label className='sort-label' htmlFor="readingStatusFilter">Reading Status: </label>
+        <select className='sort-select' name="readingStatusFilter" value={this.state.filter} id="readingStatusFilter" onChange={this.handleReadingStatusFilterClick}>
           <option value="blankStatus">No Filter</option>
           <option value="readingStatusInProgress">In Progress</option>
           <option value="readingStatusCompleted">Completed</option>
           <option value="readingStatusDNF">Did Not Finish</option>
         </select>
-      </>
+      </div>
     )
   }
 
@@ -97,9 +98,9 @@ export default class UserBookList extends Component {
 
   renderRatingFilter(){
     return (
-      <>
-        <label htmlFor="ratingFilter">Rating: </label>
-        <select name="ratingFilter" value={this.state.filter} id="ratingFilter" onChange={this.handleRatingFilterClick}>
+      <div className='Filter-Container'>
+        <label className='sort-label' htmlFor="ratingFilter">Rating: </label>
+        <select className='sort-select' name="ratingFilter" value={this.state.filter} id="ratingFilter" onChange={this.handleRatingFilterClick}>
           <option value="allrating">No Filter</option>
           <option value="rating5">Rating: 5</option>
           <option value="rating4">Rating: 4</option>
@@ -108,17 +109,19 @@ export default class UserBookList extends Component {
           <option value="rating1">Rating: 1</option>
           <option value="rating0">No Rating</option>
         </select>
-      </>
+      </div>
     )
   }
 
   renderSubHeader() {
     return (
       <>
-        <h2>My Books</h2>
-          <Link
+        <h2 className='UserBookList-Header'>My Books</h2>
+          <Link className='AddBook-Link'
             to={`/users/${this.props.userId}/add-book`}>
-            Add Book
+            <i className="fas fa-plus fa-2x"></i>
+            <br></br>
+            <p className='Log-Logo-Text'>Add Book</p>
           </Link>  
       </>
     )
@@ -134,17 +137,16 @@ export default class UserBookList extends Component {
     }
     const userId = this.props.userId
     if (this.props.booksNumber === 0) {
-      return <p>Loading...</p>
+      return <p className='Error'>Loading...</p>
     } else {
       return (
-        <>
-          {this.renderSubHeader()}
-          <br></br>
-          {this.renderSort()}
-          <br></br>
-          {this.renderReadingStatusFilter()}
-          <br></br>
-          {this.renderRatingFilter()}
+        <div className='UserBookList-Main'>
+          <div className='Filter-Sort'>
+            {this.renderSubHeader()}
+            {this.renderSort()}
+            {this.renderReadingStatusFilter()}
+            {this.renderRatingFilter()}
+          </div>
           {books.map(book => {
             return (
               <div key={book.book_id} className="Booklist">
@@ -152,7 +154,7 @@ export default class UserBookList extends Component {
               </div>
             )
           })}
-        </>
+        </div>
       )
     }
   }
@@ -163,7 +165,7 @@ export default class UserBookList extends Component {
       content = <p className="Error">There was an error</p>
     } 
     if (this.props.books.length === 0) {
-      content = <p>You have no books! Click add book to add your first book.</p>
+      content = <p className="NoBookError">You have no books! Click add book to add your first book.</p>
     } else {
       content = this.renderBooks()
     }
