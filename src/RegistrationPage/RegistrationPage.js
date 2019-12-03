@@ -17,7 +17,6 @@ export default class RegistrationPage extends Component {
 
   renderSillyText() {
     let rng = Math.floor(Math.random() * 3) + 1;
-    console.log(rng)
     let content;
     if (rng===1){
       content = <p className='silly-text'>What are you reading today?</p>
