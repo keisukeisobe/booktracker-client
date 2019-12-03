@@ -1,68 +1,47 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+BookTracker
 
-## Available Scripts
+Link: https://booktracker-app.now.sh
 
-In the project directory, you can run:
+BookTracker is an app that will allow you to track what books you're reading, your progress in you
+books, and rate the books you've read in a more granular fashion than other reading apps. 
 
-### `npm start`
+BookTracker also provides users with a profile of their reading habits and proclivities, based on their 
+ratings of books in their library. 
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+This project uses React, Express, and PostgreSQL.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+Screenshots: 
 
-### `npm test`
+https://i.imgur.com/GgGfWWd.png
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+https://i.imgur.com/E540aoC.png
 
-### `npm run build`
+https://i.imgur.com/eETCCUj.png
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+API Documentation: 
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+Endpoints: /users/:userId, /users/:userId/books/:bookId
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Base URL: https://intense-cliffs-98344.herokuapp.com/api/
 
-### `npm run eject`
+POST /users
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Creates a new user. Requires a request body with an username, email, and password. 
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+GET /users/[USER ID]
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Provides an array of all books read by the specified user ID.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+POST /users/[USER ID]
 
-## Learn More
+Creates new book entry that is keyed to the specified user. Requires a request body 
+with a title, author, description, and page count. 
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+GET /users/[USER ID]/books/[BOOK ID]
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Provides a book object from within that user's library. 
 
-### Code Splitting
+PATCH /users/[USER ID]/books/[BOOK ID]
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+Updates a book object from the user's library with the supplied information. 
 
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
