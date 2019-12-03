@@ -153,23 +153,31 @@ export default class UserProfile extends Component {
     if (this.state.themeData.length > 0){
       return (
         <div className='UserProfile'>
-          <h2 className='Profile-h2'>My Profile</h2>
-          <h3>User Statistics</h3>
-          <p>Books Finished: {this.state.finished}</p>
-          <p>Books in progress: {this.state.inProgress}</p>
-          <p>Books DNF'd: {this.state.didNotFinish}</p>
-          <p className='avg-rating-for-border'>Average Rating: {this.state.average} +/- {this.state.error}</p>
-          <h3>Correlation of Various Factors to Overall Rating</h3>
+          <div className='user-statistics'>
+            <h2 className='profile-h2'>My Profile</h2>
+            <h3 className='profile-h3'>User Statistics</h3>
+            <div className='grid-container'>
+              <span className='user-profile-p-left'>Books Finished:</span>
+              <span className='user-profile-p-right'>{this.state.finished}</span>
+              <span className='user-profile-p-left'>Books in progress:</span>
+              <span className='user-profile-p-right'>{this.state.inProgress}</span>
+              <span className='user-profile-p-left'>Books DNF'd:</span>
+              <span className='user-profile-p-right'>{this.state.didNotFinish}</span>
+              <span className='user-profile-p-left'>Average Rating:</span>
+              <span className='user-profile-p-right'>{this.state.average}</span>
+            </div>
+          </div>
+          <h3 className='user-profile-h3'>Correlation of Various Factors to Overall Rating</h3>
           {this.state.profileData.length > 0 && Object.keys(this.state.captions).length > 0 && <RadarChart captions={this.state.captions} data={this.state.profileData} options={{scales: 10, zoomDistance: 1.23, captionProps: ()=> ({fontSize: 16, textAnchor: 'middle', fontFamily: 'sans-serif'})}}size={300}/>}
-          <h3>Personal Rating vs. Plot</h3>
+          <h3 className='user-profile-h3'>Personal Rating vs. Plot</h3>
           {this.state.plotData.length > 0 && Object.keys(this.state.bookOrder).length > 0 && <RadarChart captions={this.state.bookOrder} data={this.state.plotData} options={{scales: 5, captions: false, captionProps: ()=> ({fontSize: 16, textAnchor: 'middle', fontFamily: 'sans-serif'})}}size={300}/>}
-          <h3>Personal Rating vs. Prose</h3>
+          <h3 className='user-profile-h3'>Personal Rating vs. Prose</h3>
           {this.state.proseData.length > 0 && Object.keys(this.state.bookOrder).length > 0 && <RadarChart captions={this.state.bookOrder} data={this.state.proseData} options={{scales: 5, captions: false, captionProps: ()=> ({fontSize: 16, textAnchor: 'middle', fontFamily: 'sans-serif'})}}size={300}/>}
-          <h3>Personal Rating vs. Characters</h3>
+          <h3 className='user-profile-h3'>Personal Rating vs. Characters</h3>
           {this.state.charData.length > 0 && Object.keys(this.state.bookOrder).length > 0 && <RadarChart captions={this.state.bookOrder} data={this.state.charData} options={{scales: 5, captions: false, captionProps: ()=> ({fontSize: 16, textAnchor: 'middle', fontFamily: 'sans-serif'})}}size={300}/>}
-          <h3>Personal Rating vs. Worldbuilding</h3>
+          <h3 className='user-profile-h3'>Personal Rating vs. Worldbuilding</h3>
           {this.state.worldData.length > 0 && Object.keys(this.state.bookOrder).length > 0 && <RadarChart captions={this.state.bookOrder} data={this.state.worldData} options={{scales: 5, captions: false, captionProps: ()=> ({fontSize: 16, textAnchor: 'middle', fontFamily: 'sans-serif'})}}size={300}/>}
-          <h3>Personal Rating vs. Theme</h3>
+          <h3 className='user-profile-h3'>Personal Rating vs. Theme</h3>
           {this.state.themeData.length > 0 && Object.keys(this.state.bookOrder).length > 0 && <RadarChart captions={this.state.bookOrder} data={this.state.themeData} options={{scales: 5, captions: false, captionProps: ()=> ({fontSize: 16, textAnchor: 'middle', fontFamily: 'sans-serif'})}}size={300}/>}
         </div>
       )

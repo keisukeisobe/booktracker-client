@@ -104,26 +104,26 @@ class UpdateBookForm extends Component {
         
         <div className='grid-container'>
           <label className='detailed-text'>Personal Rating:</label>
-            <div class="star-rating rating">
+            <div className="star-rating rating">
               <input id="rating5" type="radio" name="rating" value="5" checked={this.state.rating===5} onChange={e => this.handleChange(e, true)} required></input>
               <label htmlFor="rating5" title="5 stars">
-                <i class="active fa fa-star" aria-hidden="true"></i>
+                <i className="active fa fa-star" aria-hidden="true"></i>
               </label>
               <input id="rating4" type="radio" name="rating" value="4" checked={this.state.rating===4} onChange={e => this.handleChange(e, true)}></input>
               <label htmlFor="rating4" title="4 stars">
-                <i class="active fa fa-star" aria-hidden="true"></i>
+                <i className="active fa fa-star" aria-hidden="true"></i>
               </label>
               <input id="rating3" type="radio" name="rating" value="3" checked={this.state.rating===3} onChange={e => this.handleChange(e, true)}></input>
               <label htmlFor="rating3" title="3 stars">
-                <i class="active fa fa-star" aria-hidden="true"></i>
+                <i className="active fa fa-star" aria-hidden="true"></i>
               </label>
               <input id="rating2" type="radio" name="rating" value="2" checked={this.state.rating===2} onChange={e => this.handleChange(e, true)}></input>
               <label htmlFor="rating2" title="2 stars">
-                <i class="active fa fa-star" aria-hidden="true"></i>
+                <i className="active fa fa-star" aria-hidden="true"></i>
               </label>
               <input id="rating1" type="radio" name="rating" value="1" checked={this.state.rating===1} onChange={e => this.handleChange(e, true)}></input>
               <label htmlFor="rating1" title="1 star">
-                <i class="active fa fa-star" aria-hidden="true"></i>
+                <i className="active fa fa-star" aria-hidden="true"></i>
               </label>
             </div>
           
@@ -132,23 +132,23 @@ class UpdateBookForm extends Component {
             <div className="star-rating plot">
               <input id="plot5" type="radio" name="plot" value="5" checked={this.state.plot===5} onChange={e => this.handleChange(e, true)} required></input>
               <label htmlFor="plot5" title="5 stars">
-                <i class="active fa fa-star" aria-hidden="true"></i>
+                <i className="active fa fa-star" aria-hidden="true"></i>
               </label>
               <input id="plot4" type="radio" name="plot" value="4" checked={this.state.plot===4} onChange={e => this.handleChange(e, true)}></input>
               <label htmlFor="plot4" title="4 stars">
-                <i class="active fa fa-star" aria-hidden="true"></i>
+                <i className="active fa fa-star" aria-hidden="true"></i>
               </label>
               <input id="plot3" type="radio" name="plot" value="3" checked={this.state.plot===3} onChange={e => this.handleChange(e, true)}></input>
               <label htmlFor="plot3" title="3 stars">
-                <i class="active fa fa-star" aria-hidden="true"></i>
+                <i className="active fa fa-star" aria-hidden="true"></i>
               </label>
               <input id="plot2" type="radio" name="plot" value="2" checked={this.state.plot===2} onChange={e => this.handleChange(e, true)}></input>
               <label htmlFor="plot2" title="2 stars">
-                <i class="active fa fa-star" aria-hidden="true"></i>
+                <i className="active fa fa-star" aria-hidden="true"></i>
               </label>
               <input id="plot1" type="radio" name="plot" value="1" checked={this.state.plot===1} onChange={e => this.handleChange(e, true)}></input>
               <label htmlFor="plot1" title="1 star">
-                <i class="active fa fa-star" aria-hidden="true"></i>
+                <i className="active fa fa-star" aria-hidden="true"></i>
               </label>
             </div>
           
@@ -157,23 +157,23 @@ class UpdateBookForm extends Component {
             <div className="star-rating prose">
               <input id="prose5" type="radio" name="prose" value="5" checked={this.state.prose===5} onChange={e => this.handleChange(e, true)} required></input>
               <label htmlFor="prose5" title="5 stars">
-                <i class="active fa fa-star" aria-hidden="true"></i>
+                <i className="active fa fa-star" aria-hidden="true"></i>
               </label>
               <input id="prose4" type="radio" name="prose" value="4" checked={this.state.prose===4} onChange={e => this.handleChange(e, true)}></input>
               <label htmlFor="prose4" title="4 stars">
-                <i class="active fa fa-star" aria-hidden="true"></i>
+                <i className="active fa fa-star" aria-hidden="true"></i>
               </label>
               <input id="prose3" type="radio" name="prose" value="3" checked={this.state.prose===3} onChange={e => this.handleChange(e, true)}></input>
               <label htmlFor="prose3" title="3 stars">
-                <i class="active fa fa-star" aria-hidden="true"></i>
+                <i className="active fa fa-star" aria-hidden="true"></i>
               </label>
               <input id="prose2" type="radio" name="prose" value="2" checked={this.state.prose===2} onChange={e => this.handleChange(e, true)}></input>
               <label htmlFor="prose2" title="2 stars">
-                <i class="active fa fa-star" aria-hidden="true"></i>
+                <i className="active fa fa-star" aria-hidden="true"></i>
               </label>
               <input id="prose1" type="radio" name="prose" value="1" checked={this.state.prose===1} onChange={e => this.handleChange(e, true)}></input>
               <label htmlFor="prose1" title="1 star">
-                <i class="active fa fa-star" aria-hidden="true"></i>
+                <i className="active fa fa-star" aria-hidden="true"></i>
               </label>
             </div>
           
@@ -182,23 +182,23 @@ class UpdateBookForm extends Component {
             <div className="star-rating worldbuilding">
               <input id="worldbuilding5" type="radio" name="worldbuilding" value="5" checked={this.state.worldbuilding===5} onChange={e => this.handleChange(e, true)} required></input>
               <label htmlFor="worldbuilding5" title="5 stars">
-                <i class="active fa fa-star" aria-hidden="true"></i>
+                <i className="active fa fa-star" aria-hidden="true"></i>
               </label>
               <input id="worldbuilding4" type="radio" name="worldbuilding" value="4" checked={this.state.worldbuilding===4} onChange={e => this.handleChange(e, true)}></input>
               <label htmlFor="worldbuilding4" title="4 stars">
-                <i class="active fa fa-star" aria-hidden="true"></i>
+                <i className="active fa fa-star" aria-hidden="true"></i>
               </label>
               <input id="worldbuilding3" type="radio" name="worldbuilding" value="3" checked={this.state.worldbuilding===3} onChange={e => this.handleChange(e, true)}></input>
               <label htmlFor="worldbuilding3" title="3 stars">
-                <i class="active fa fa-star" aria-hidden="true"></i>
+                <i className="active fa fa-star" aria-hidden="true"></i>
               </label>
               <input id="worldbuilding2" type="radio" name="worldbuilding" value="2" checked={this.state.worldbuilding===2} onChange={e => this.handleChange(e, true)}></input>
               <label htmlFor="worldbuilding2" title="2 stars">
-                <i class="active fa fa-star" aria-hidden="true"></i>
+                <i className="active fa fa-star" aria-hidden="true"></i>
               </label>
               <input id="worldbuilding1" type="radio" name="worldbuilding" value="1" checked={this.state.worldbuilding===1} onChange={e => this.handleChange(e, true)}></input>
               <label htmlFor="worldbuilding1" title="1 star">
-                <i class="active fa fa-star" aria-hidden="true"></i>
+                <i className="active fa fa-star" aria-hidden="true"></i>
               </label>
             </div>
           
@@ -207,23 +207,23 @@ class UpdateBookForm extends Component {
             <div className="star-rating characters">
               <input id="characters5" type="radio" name="characters" value="5" checked={this.state.characters===5} onChange={e => this.handleChange(e, true)} required></input>
               <label htmlFor="characters5" title="5 stars">
-                <i class="active fa fa-star" aria-hidden="true"></i>
+                <i className="active fa fa-star" aria-hidden="true"></i>
               </label>
               <input id="characters4" type="radio" name="characters" value="4" checked={this.state.characters===4} onChange={e => this.handleChange(e, true)}></input>
               <label htmlFor="characters4" title="4 stars">
-                <i class="active fa fa-star" aria-hidden="true"></i>
+                <i className="active fa fa-star" aria-hidden="true"></i>
               </label>
               <input id="characters3" type="radio" name="characters" value="3" checked={this.state.characters===3} onChange={e => this.handleChange(e, true)}></input>
               <label htmlFor="characters3" title="3 stars">
-                <i class="active fa fa-star" aria-hidden="true"></i>
+                <i className="active fa fa-star" aria-hidden="true"></i>
               </label>
               <input id="characters2" type="radio" name="characters" value="2" checked={this.state.characters===2} onChange={e => this.handleChange(e, true)}></input>
               <label htmlFor="characters2" title="2 stars">
-                <i class="active fa fa-star" aria-hidden="true"></i>
+                <i className="active fa fa-star" aria-hidden="true"></i>
               </label>
               <input id="characters1" type="radio" name="characters" value="1" checked={this.state.characters===1} onChange={e => this.handleChange(e, true)}></input>
               <label htmlFor="characters1" title="1 star">
-                <i class="active fa fa-star" aria-hidden="true"></i>
+                <i className="active fa fa-star" aria-hidden="true"></i>
               </label>
             </div>
           
@@ -232,23 +232,23 @@ class UpdateBookForm extends Component {
             <div className="star-rating theme">
               <input id="theme5" type="radio" name="theme" value="5" checked={this.state.theme===5} onChange={e => this.handleChange(e, true)} required></input>
               <label htmlFor="theme5" title="5 stars">
-                <i class="active fa fa-star" aria-hidden="true"></i>
+                <i className="active fa fa-star" aria-hidden="true"></i>
               </label>
               <input id="theme4" type="radio" name="theme" value="4" checked={this.state.theme===4} onChange={e => this.handleChange(e, true)}></input>
               <label htmlFor="theme4" title="4 stars">
-                <i class="active fa fa-star" aria-hidden="true"></i>
+                <i className="active fa fa-star" aria-hidden="true"></i>
               </label>
               <input id="theme3" type="radio" name="theme" value="3" checked={this.state.theme===3} onChange={e => this.handleChange(e, true)}></input>
               <label htmlFor="theme3" title="3 stars">
-                <i class="active fa fa-star" aria-hidden="true"></i>
+                <i className="active fa fa-star" aria-hidden="true"></i>
               </label>
               <input id="theme2" type="radio" name="theme" value="2" checked={this.state.theme===2} onChange={e => this.handleChange(e, true)}></input>
               <label htmlFor="theme2" title="2 stars">
-                <i class="active fa fa-star" aria-hidden="true"></i>
+                <i className="active fa fa-star" aria-hidden="true"></i>
               </label>
               <input id="theme1" type="radio" name="theme" value="1" checked={this.state.theme===1} onChange={e => this.handleChange(e, true)}></input>
               <label htmlFor="theme1" title="1 star">
-                <i class="active fa fa-star" aria-hidden="true"></i>
+                <i className="active fa fa-star" aria-hidden="true"></i>
               </label>
             </div>
           

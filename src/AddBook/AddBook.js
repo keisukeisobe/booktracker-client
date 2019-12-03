@@ -4,6 +4,12 @@ import TokenService from '../services/token-service';
 import './AddBook.css'
 
 export default class AddBook extends Component {
+  state = {
+    title: '',
+    author: '',
+    maxpagecount: '',
+    description: ''
+  }
   static defaultProps = {
     history: {
       push: () => {},
@@ -12,9 +18,21 @@ export default class AddBook extends Component {
 
   handleAddBookSuccess = book_id => {
     const { history } = this.props
-    //this.props.fetchBooks()
     history.push(`/users/${this.props.userId}`)
   }
+
+
+  handleChange = (event, isNumber=false) => {
+    const target = event.target
+    const name = target.name
+    if (isNumber){
+      const val = Number(event.target.value)
+      this.setState({[name]: val})
+    } else {
+      this.setState({[name]: event.target.value})
+    }
+  }
+
 
   handleSubmit = event => {
     event.preventDefault();
@@ -62,13 +80,13 @@ export default class AddBook extends Component {
         <h2 className='add-book-h2'>Add Book</h2>
         <div className='grid-container'>
           <label className='add-book-label' htmlFor="title"> Title:</label>
-          <input className='add-book-input' type="text" name="title" id="title" required></input>
+          <input className='add-book-input' type="text" name="title" id="title" value={this.state.title} onChange={e=>this.handleChange(e, false)} required></input>
           <label className='add-book-label' htmlFor='author'> Author: </label>
-          <input className='add-book-input' type='text' name="author" id="author" required></input>
-          <label className='add-book-label' htmlFor="description">Description:</label>
-          <input className='add-book-input' type="text" name="description" id="description" required></input>
+          <input className='add-book-input' type='text' name="author" id="author" value={this.state.author} onChange={e=>this.handleChange(e, false)} required></input>
           <label className='add-book-label' htmlFor="maxpagecount">Pagecount:</label>
-          <input className='add-book-input' type="number" min="0" name="maxpagecount" id="maxpagecount" required></input>
+          <input className='add-book-input' type="number" min="0" name="maxpagecount" id="maxpagecount" value={this.state.maxpagecount} onChange={e=>this.handleChange(e, true)} required></input>
+          <label className='add-book-label' htmlFor="description">Description:</label>
+          <textarea className="add-book-textarea" name="description" id="description" value={this.state.description} onChange={e=>this.handleChange(e, false)} required/>
         </div>
         <button className='add-book-button' type='submit'>Submit</button>
       </form>

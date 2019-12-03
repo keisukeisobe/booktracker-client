@@ -25,6 +25,10 @@ export default class Book extends Component {
       }
     ]
     const captions = {rating: 'Personal Rating', plot: 'Plot', prose: 'Prose', worldbuilding: 'Worldbuilding', characters: 'Characters', theme: 'Theme'}
+    let rating = [];
+    for (let i = 0; i < book.rating; i++) {
+      rating.push(<i key={i} className="active fa fa-star" aria-hidden="true"></i>)
+    }
     let content = (
       <div className="Details">
         <h2 className='Book-Title'>
@@ -39,7 +43,7 @@ export default class Book extends Component {
           <div className='column-right'>
             <p className='Book-Details'> {(this.toProperCase(book.status))}</p>
             {this.props.details ? <p className='Book-Details'> {book.pagecount}/{book.maxpagecount} pages</p>:<p className='Book-Details'>{(100*book.percent).toPrecision(3)}%</p>}
-            {!this.props.details && <p className='Book-Details'> {this.props.book.rating}/5</p>}
+            {!this.props.details && <p className='Book-Details'>{rating}</p>}
           </div>
         </div>
         {this.props.details && <RadarChart captions={captions} data={bookData} options={{scales: 5, zoomDistance: 1.32, captionMargin: 10, captionProps: ()=> ({fontSize: 16, textAnchor: 'middle', fontWeight: 'bold', fontFamily: 'sans-serif'})}}size={360}/>}
