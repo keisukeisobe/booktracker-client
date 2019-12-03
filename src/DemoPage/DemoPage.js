@@ -6,7 +6,7 @@ export default class DemoPage extends Component {
     return (
       <div className='demo-page'>
         <h2>Demo this app</h2>
-        <p className='demo-p'>Use the username: dunder and password: password to log in as a test user and try various features of this app.</p>
+        <p className='demo-p'>Use the username: dunder and password: Password1! to log in as a test user and try various features of this app.</p>
       </div>
       )
   }
