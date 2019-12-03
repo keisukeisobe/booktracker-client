@@ -10,3 +10,19 @@
   color: white;
   padding: 5% 13%
 }
+
+@media screen and (min-width: 800px) {
+  .App-Main {
+    padding-left: 16%;
+    padding-right: 16%;
+  }
+}
+
+
+@media screen and (min-width: 1000px) {
+  .App-Main {
+    padding-left: 25%;
+    padding-right: 25%;
+    font-size: 125%;
+  }
+}
