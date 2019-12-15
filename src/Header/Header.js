@@ -58,7 +58,7 @@ export default class Header extends Component {
           <p className='log-logo-text'>Log In</p>
         </Link>
         <Link className='log-link'
-          to='/demo'>
+          to='/about'>
           <i className="fas header-logo fa-info fa-3x"></i>
           <br></br>
           <p className='log-logo-text'>About</p>
