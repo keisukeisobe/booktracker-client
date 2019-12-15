@@ -15,7 +15,7 @@
 .reading-status-select {
   padding: 1%;
   grid-column-start: 2;
-  width: 55%;
+  width: 45%;
   height: 90%;
 }
 
@@ -38,6 +38,8 @@
   width: 90%;
   height: 100px;
   margin: 3%;
+  font-size: 16;
+  font-family: 'Alatsi', sans-serif;
 }
 
 .detailed-text {

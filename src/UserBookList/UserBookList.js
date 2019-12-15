@@ -119,7 +119,7 @@ export default class UserBookList extends Component {
         <h2 className='user-book-list-header'>My Books</h2>
           <Link className='add-book-link'
             to={`/users/${this.props.userId}/add-book`}>
-            <i className="fas fa-plus fa-2x"></i>
+            <i className="fas fa-plus fa-2x booklist-logo"></i>
             <br></br>
             <p className='log-logo-text'>Add Book</p>
           </Link>  

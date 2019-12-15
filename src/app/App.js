@@ -125,10 +125,10 @@ class App extends Component {
         </header>
         <main className='App-Main'>
           <Switch>
-            <Route exact path={'/'} render={props => (<LandingPage {...props} />) }/>
+            <Route exact path={'/'} render={props => (<DemoPage userId={this.state.userId} setUserId={this.setUserId} {...props}/>)}/>) }/>
             <Route exact path={'/register'} render={props => (TokenService.hasAuthToken() ? <LandingPage {...props} />: <RegistrationPage {...props}/>)}/>
             <Route exact path={'/login'} render={props => (TokenService.hasAuthToken() ? <LandingPage {...props} />: <LoginPage fetchBooks={this.fetchBooks} userId={this.state.userId} setUserId={this.setUserId} {...props}/>)}/>
-            <Route exact path={'/demo'} render={props => (TokenService.hasAuthToken() ? <LandingPage {...props} />: <DemoPage userId={this.state.userId} setUserId={this.setUserId} {...props}/>)}/>
+            <Route exact path={'/about'} render={props => (TokenService.hasAuthToken() ? <LandingPage {...props} />: <DemoPage userId={this.state.userId} setUserId={this.setUserId} {...props}/>)}/>
             <Route exact path={'/users/:user_id'} render={props => (TokenService.hasAuthToken() ? this.state.booksLoaded ? <UserBookList {...props} fetchBooks={this.fetchBooks} books={this.state.books} userId={this.state.userId} setBooks={this.setBooks} setUserId={this.setUserId} setError={this.setError} error={this.state.error}/> : <p className='loading-p'>Loading...</p> : <Redirect to = {'/login'}/> )}/>
             <Route exact path={'/users/:user_id/books/:book_id'} render={props => (TokenService.hasAuthToken() ? <UserBook {...props} books={this.state.books} fetchBooks={this.fetchBooks} userId={this.state.userId} setBooks={this.setBooks} setUserId={this.setUserId} setError={this.setError} error={this.state.error}/> : <Redirect to = {'/login'}/>)}/>
             <Route exact path={'/users/:user_id/add-book'} render={props => (TokenService.hasAuthToken() ? <AddBook {...props} fetchBooks={this.fetchBooks} books={this.state.books} userId={this.state.userId} setBooks={this.setBooks} setError={this.setEror} error={this.state.error}/> : <Redirect to={'/login'}/>)}/>

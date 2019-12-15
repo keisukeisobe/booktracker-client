@@ -10,6 +10,7 @@ export default class UserProfile extends Component {
   state = {
     finished: '',
     inProgress: '',
+    didNotFinish: '',
     average: '',
     profileData: {},
     captions: [],
@@ -19,7 +20,8 @@ export default class UserProfile extends Component {
     charData: {},
     worldData: {},
     themeData: {},
-    bookOrder: []
+    bookOrder: [],
+    callDone: false
   }
   componentDidMount() {
     const userId  = this.props.match.params.user_id;
@@ -145,45 +147,52 @@ export default class UserProfile extends Component {
           this.setState({themeData: themeData.concat(ratingData)})
         }
       })
+      .then( () => this.setState({callDone: true})
+      )
   }
 
   render() {
-    if (this.state.themeData.length > 0){
-      return (
-        <div className='user-profile'>
-          <div className='user-statistics'>
-            <h2 className='profile-h2'>My Profile</h2>
-            <h3 className='profile-h3'>User Statistics</h3>
-            <div className='grid-container-profile'>
-              <span className='user-profile-p-left'>Books Finished:</span>
-              <span className='user-profile-p-right'>{this.state.finished}</span>
-              <span className='user-profile-p-left'>Books In Progress:</span>
-              <span className='user-profile-p-right'>{this.state.inProgress}</span>
-              <span className='user-profile-p-left'>Books DNF'd:</span>
-              <span className='user-profile-p-right'>{this.state.didNotFinish}</span>
-              <span className='user-profile-p-left'>Average Rating:</span>
-              <span className='user-profile-p-right'>{this.state.average.toPrecision(2)}</span>
+    if (!this.state.callDone){
+      return <p className='loading-p'>Loading...</p>
+    } else {
+      if (Object.keys(this.state.bookOrder).length >= 10 && this.props.books.length >= 10){
+        console.log('more than 10 books');
+        return (
+          <div className='user-profile'>
+            <div className='user-statistics'>
+              <h2 className='profile-h2'>My Profile</h2>
+              <h3 className='profile-h3'>User Statistics</h3>
+              <div className='grid-container-profile'>
+                <span className='user-profile-p-left'>Books Finished:</span>
+                <span className='user-profile-p-right'>{this.state.finished}</span>
+                <span className='user-profile-p-left'>Books In Progress:</span>
+                <span className='user-profile-p-right'>{this.state.inProgress}</span>
+                <span className='user-profile-p-left'>Books DNF'd:</span>
+                <span className='user-profile-p-right'>{this.state.didNotFinish}</span>
+                <span className='user-profile-p-left'>Average Rating:</span>
+                <span className='user-profile-p-right'>{this.state.average.toPrecision(2)}</span>
+              </div>
+            </div>
+            <div className='user-graphs'>
+              <h3 className='user-profile-h3'>Correlation of Various Factors to Overall Rating</h3>
+              {Object.keys(this.state.bookOrder).length < 10 && <p className='loading-p'>Correlation coefficients chart may not appear until you add more books and ratings stabilize.</p>}
+              {this.state.profileData.length > 0 && Object.keys(this.state.captions).length > 0 && <RadarChart captions={this.state.captions} data={this.state.profileData} options={{scales: 10, zoomDistance: 1.23, captionProps: ()=> ({fontSize: 16, textAnchor: 'middle', fontFamily: 'sans-serif'})}}size={300}/>}
+              <h3 className='user-profile-h3'>Personal Rating vs. Plot</h3>
+              {this.state.plotData.length > 0 && Object.keys(this.state.bookOrder).length > 0 && <RadarChart captions={this.state.bookOrder} data={this.state.plotData} options={{scales: 5, captions: false, captionProps: ()=> ({fontSize: 16, textAnchor: 'middle', fontFamily: 'sans-serif'})}}size={300}/>}
+              <h3 className='user-profile-h3'>Personal Rating vs. Prose</h3>
+              {this.state.proseData.length > 0 && Object.keys(this.state.bookOrder).length > 0 && <RadarChart captions={this.state.bookOrder} data={this.state.proseData} options={{scales: 5, captions: false, captionProps: ()=> ({fontSize: 16, textAnchor: 'middle', fontFamily: 'sans-serif'})}}size={300}/>}
+              <h3 className='user-profile-h3'>Personal Rating vs. Characters</h3>
+              {this.state.charData.length > 0 && Object.keys(this.state.bookOrder).length > 0 && <RadarChart captions={this.state.bookOrder} data={this.state.charData} options={{scales: 5, captions: false, captionProps: ()=> ({fontSize: 16, textAnchor: 'middle', fontFamily: 'sans-serif'})}}size={300}/>}
+              <h3 className='user-profile-h3'>Personal Rating vs. Worldbuilding</h3>
+              {this.state.worldData.length > 0 && Object.keys(this.state.bookOrder).length > 0 && <RadarChart captions={this.state.bookOrder} data={this.state.worldData} options={{scales: 5, captions: false, captionProps: ()=> ({fontSize: 16, textAnchor: 'middle', fontFamily: 'sans-serif'})}}size={300}/>}
+              <h3 className='user-profile-h3'>Personal Rating vs. Theme</h3>
+              {this.state.themeData.length > 0 && Object.keys(this.state.bookOrder).length > 0 && <RadarChart captions={this.state.bookOrder} data={this.state.themeData} options={{scales: 5, captions: false, captionProps: ()=> ({fontSize: 16, textAnchor: 'middle', fontFamily: 'sans-serif'})}}size={300}/>}
             </div>
           </div>
-          <div className='user-graphs'>
-            <h3 className='user-profile-h3'>Correlation of Various Factors to Overall Rating</h3>
-            {Object.keys(this.state.bookOrder).length < 10 && <p className='loading-p'>Correlation coefficients chart may not appear until you add more books and ratings stabilize.</p>}
-            {this.state.profileData.length > 0 && Object.keys(this.state.captions).length > 0 && <RadarChart captions={this.state.captions} data={this.state.profileData} options={{scales: 10, zoomDistance: 1.23, captionProps: ()=> ({fontSize: 16, textAnchor: 'middle', fontFamily: 'sans-serif'})}}size={300}/>}
-            <h3 className='user-profile-h3'>Personal Rating vs. Plot</h3>
-            {this.state.plotData.length > 0 && Object.keys(this.state.bookOrder).length > 0 && <RadarChart captions={this.state.bookOrder} data={this.state.plotData} options={{scales: 5, captions: false, captionProps: ()=> ({fontSize: 16, textAnchor: 'middle', fontFamily: 'sans-serif'})}}size={300}/>}
-            <h3 className='user-profile-h3'>Personal Rating vs. Prose</h3>
-            {this.state.proseData.length > 0 && Object.keys(this.state.bookOrder).length > 0 && <RadarChart captions={this.state.bookOrder} data={this.state.proseData} options={{scales: 5, captions: false, captionProps: ()=> ({fontSize: 16, textAnchor: 'middle', fontFamily: 'sans-serif'})}}size={300}/>}
-            <h3 className='user-profile-h3'>Personal Rating vs. Characters</h3>
-            {this.state.charData.length > 0 && Object.keys(this.state.bookOrder).length > 0 && <RadarChart captions={this.state.bookOrder} data={this.state.charData} options={{scales: 5, captions: false, captionProps: ()=> ({fontSize: 16, textAnchor: 'middle', fontFamily: 'sans-serif'})}}size={300}/>}
-            <h3 className='user-profile-h3'>Personal Rating vs. Worldbuilding</h3>
-            {this.state.worldData.length > 0 && Object.keys(this.state.bookOrder).length > 0 && <RadarChart captions={this.state.bookOrder} data={this.state.worldData} options={{scales: 5, captions: false, captionProps: ()=> ({fontSize: 16, textAnchor: 'middle', fontFamily: 'sans-serif'})}}size={300}/>}
-            <h3 className='user-profile-h3'>Personal Rating vs. Theme</h3>
-            {this.state.themeData.length > 0 && Object.keys(this.state.bookOrder).length > 0 && <RadarChart captions={this.state.bookOrder} data={this.state.themeData} options={{scales: 5, captions: false, captionProps: ()=> ({fontSize: 16, textAnchor: 'middle', fontFamily: 'sans-serif'})}}size={300}/>}
-          </div>
-        </div>
-      )
-    } else {
-      return <p className='loading-p'>Loading...</p>
+        )
+      } else {
+        return <p className='loading-p'>User profile data cannot be generated until more books have been logged.</p>
+      }
     }
   }
 }

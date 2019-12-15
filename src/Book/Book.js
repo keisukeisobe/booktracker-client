@@ -46,7 +46,7 @@ export default class Book extends Component {
             {!this.props.details && <p className='book-details'>{rating}</p>}
           </div>
         </div>
-        {this.props.details && <RadarChart captions={captions} data={bookData} options={{scales: 5, zoomDistance: 1.32, captionMargin: 10, captionProps: ()=> ({fontSize: 16, textAnchor: 'middle', fontWeight: 'bold', fontFamily: 'sans-serif'})}}size={360}/>}
+        {this.props.details && <RadarChart captions={captions} data={bookData} options={{scales: 5, zoomDistance: 1.32, captionMargin: 10, captionProps: ()=> ({fontSize: 16, textAnchor: 'middle', fontWeight: 'bold', fontFamily: 'sans-serif'})}}size={300}/>}
       </div>
     )
     return content
