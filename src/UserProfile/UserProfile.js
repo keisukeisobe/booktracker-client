@@ -39,12 +39,10 @@ export default class UserProfile extends Component {
       })
       .then(books => {
         this.props.setBooks(books)
-        //should collapse
         this.setState({finished: this.props.books.filter(book => book.status === "completed").length});
         this.setState({inProgress: this.props.books.filter(book => book.status === "in progress").length});
         this.setState({didNotFinish: this.props.books.filter(book => book.status === "did not finish").length});
         this.setState({average: Number((this.props.books.reduce((total, next) => total + next.rating, 0) / this.props.books.length).toPrecision(3))})
-        //map once-- one loop instead of seven, create an object and store properties onto it or whatever
         const title = this.props.books.map(book => book.title);
         const rating = this.props.books.map(book => book.rating);
         const plot = this.props.books.map(book => book.plot);  
@@ -52,7 +50,6 @@ export default class UserProfile extends Component {
         const characters = this.props.books.map(book => book.characters);  
         const worldbuilding = this.props.books.map(book => book.worldbuilding);  
         const theme = this.props.books.map(book => book.theme);
-        //leave for last
         let bookOrder = {};
         let ratingData = [
           {
@@ -89,7 +86,6 @@ export default class UserProfile extends Component {
         let charCorr;
         let worldCorr;
         let themeCorr;
-        //loop this-- just use an object? of the variable names
         if (rating.length >= 2 && plot.length >= 2){
           plotCorr = ss.sampleCorrelation(rating, plot).toPrecision(2)
         }
@@ -135,7 +131,6 @@ export default class UserProfile extends Component {
             themeData[0].data[title[index]]=theme[index]/5
             themeData[0].meta={color: 'grey'}
           }
-          //collapse these into one
           this.setState({profileData: profileData})
           this.setState({captions: captions})
           this.setState({bookOrder})
