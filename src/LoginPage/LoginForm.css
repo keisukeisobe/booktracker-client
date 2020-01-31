@@ -30,3 +30,7 @@
 	font-weight: bold;
 	letter-spacing: 1px;
 }
+
+.login-button:hover {
+  background-color: #2fa196;
+}

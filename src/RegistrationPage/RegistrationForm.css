@@ -34,3 +34,14 @@
 	font-weight: bold;
 	letter-spacing: 1px;
 }
+
+.register-button:hover {
+  background-color: #2fa196
+}
+
+.registration-form-text {
+  color: white;
+  text-align: center;
+  margin-top: 5%;
+  padding: 0%;
+}

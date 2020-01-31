@@ -8,7 +8,7 @@ export default class AddBook extends Component {
     title: '',
     author: '',
     maxpagecount: '',
-    description: ''
+    description: '',
   }
   static defaultProps = {
     history: {

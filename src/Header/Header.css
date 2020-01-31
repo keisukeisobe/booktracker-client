@@ -39,6 +39,11 @@
   width: 33%;
   text-decoration: none;
   color: whitesmoke;
+  cursor: pointer;
+}
+
+.log-link:hover {
+  color: grey;
 }
 
 .log-logo-text {

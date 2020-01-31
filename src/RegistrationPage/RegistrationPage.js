@@ -43,7 +43,6 @@ export default class RegistrationPage extends Component {
             onRegistrationSuccess={this.handleRegistrationSuccess}
           />
         </div>
-        {this.renderSillyText()}
       </>
     )
   }

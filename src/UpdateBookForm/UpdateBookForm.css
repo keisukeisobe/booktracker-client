@@ -15,7 +15,7 @@
 .reading-status-select {
   padding: 1%;
   grid-column-start: 2;
-  width: 45%;
+  width: 55%;
   height: 90%;
 }
 
@@ -87,4 +87,14 @@
 	font-size: 12px;
 	font-weight: bold;
 	letter-spacing: 1px;
+}
+
+.show-edit-button:hover, .update-form-button:hover {
+  background-color: #142463
+}
+
+.error {
+  margin: 2% 0%;
+  padding: 0;
+  color: black;
 }

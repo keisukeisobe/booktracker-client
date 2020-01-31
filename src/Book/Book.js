@@ -61,7 +61,7 @@ export default class Book extends Component {
       return (content);
     } else {
       return (
-        <Link to={`/users/${userId}/books/${book.book_id}`}>
+        <Link className='book-link' to={`/users/${userId}/books/${book.book_id}`}>
           {content}
         </Link>
       )

@@ -21,6 +21,10 @@
   margin: 0;
 }
 
+.booklist-logo:hover {
+  color: grey;
+}
+
 .filter-container {
   margin: 0;
   padding: 0;
@@ -64,4 +68,7 @@ a {
   border-color: turquoise;
   background-color: turquoise;
   text-align: center;
+  cursor: pointer;
 }
+
+

@@ -45,7 +45,7 @@ export default class LoginPage extends Component {
             onLoginSuccess={this.handleLoginSuccess}
           />
         </div>
-        {this.renderSillyText()}
+        <p className='silly-text'>If you would like to demo this app, please login using username: dunder, password: Password1!</p>
       </>
     )
   }

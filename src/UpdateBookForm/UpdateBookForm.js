@@ -7,7 +7,6 @@ import './UpdateBookForm.css'
 class UpdateBookForm extends Component {
   state = {
     open: false,
-    error: null,
     ...this.props.book
   }
 
@@ -26,7 +25,6 @@ class UpdateBookForm extends Component {
   handleSubmit = event => {
     event.preventDefault();
     const {rating, plot, prose, characters, worldbuilding, theme, content, pagecount, maxpagecount, reading_status} = event.target;
-    this.setState({error: null})
     fetch(`${config.API_ENDPOINT}/users/${this.props.userId}/books/${this.props.book.book_id}`, {
       method: 'PATCH',
       headers: {
@@ -82,6 +80,12 @@ class UpdateBookForm extends Component {
     this.setState({open: !open})
   }
 
+  validationError = () => {
+    return (
+      <div className='error'>Please enter a rating for all categories.</div>
+    )
+  }
+
   renderForm() {
     return (
       <form className="patch-book-form" onSubmit={this.handleSubmit}>
@@ -104,7 +108,7 @@ class UpdateBookForm extends Component {
         
         <div className='grid-container-update'>
           <label className='detailed-text'>Personal Rating:</label>
-            <div className="star-rating rating">
+            <div className='star-rating rating'>
               <input id="rating5" type="radio" name="rating" value="5" checked={this.state.rating===5} onChange={e => this.handleChange(e, true)} required></input>
               <label htmlFor="rating5" title="5 stars">
                 <i className="active fa fa-star" aria-hidden="true"></i>
@@ -254,7 +258,11 @@ class UpdateBookForm extends Component {
           
           <br></br>
         </div>
+
         <button className='update-form-button' type='submit'>Update</button> 
+        <div>
+          {(this.state.rating === 0 || this.state.plot === 0 || this.state.prose === 0 || this.state.characters === 0 || this.state.worldbuilding === 0 || this.state.theme === 0) && this.validationError()}
+        </div>
       </form>
     )
   }
