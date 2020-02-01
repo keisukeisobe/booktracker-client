@@ -166,7 +166,6 @@ export default class UserBookList extends Component {
     } 
     if (this.props.books.length === 0) {
       content= this.renderBooks();
-      //content = <p className="no-book-error">You have no books! Go to My Books then click Add Book to add your first book.</p>
     } else {
       content = this.renderBooks()
     }
