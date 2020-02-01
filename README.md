@@ -27,6 +27,25 @@ ratings of books in their library.
 ### Mobile Profile View
 <img src='./src/img/Mobile-Graph.png' alt='Mobile Profile View' width='360px'/>
 
+## API Documentation: 
+```
+├── /auth/login
+│   └── POST    /           (log in)
+|
+├── /users
+│   └── GET     /lists      (get lists for user)
+|
+├── /users/:user_id
+│   └── GET     /           (gets user information)
+│   └── POST    /           (post new book to user's list)
+|
+├── /users/:user_id/books/:book_id
+│   └── GET     /           (get book from user list)
+│   └── PATCH   /           (update book information for user)
+```
+
+Base URL: https://intense-cliffs-98344.herokuapp.com/api/
+
 ## Tech Specs: 
 **Front-end:**
 - React
@@ -39,3 +58,4 @@ ratings of books in their library.
 - Express
 - PostgreSQL DB hosted on Heroku
 - JWT 
+
