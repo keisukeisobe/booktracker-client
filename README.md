@@ -44,14 +44,14 @@ ratings of books in their library.
 │   └── PATCH   /           (update book information for user)
 ```
 
-Base URL: https://intense-cliffs-98344.herokuapp.com/api/
+Base URL: https://gentle-fortress-47962.herokuapp.com/api
 
 ## Tech Specs: 
 **Front-end:**
 - React
 - HTML5
 - CSS
-- Zeit
+- Vercel (formerly known as Zeit)
 
 **Back-end**
 - Node
