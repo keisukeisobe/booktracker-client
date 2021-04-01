@@ -124,7 +124,7 @@ class App extends Component {
         </header>
         <main className='App-Main'>
           <Switch>
-            <Route exact path={'/'} render={props => (<DemoPage userId={this.state.userId} setUserId={this.setUserId} {...props}/>)}/>) }/>
+            <Route exact path={'/'} render={props => (<DemoPage userId={this.state.userId} setUserId={this.setUserId} {...props}/>)}/> 
             <Route exact path={'/register'} render={props => (TokenService.hasAuthToken() ? <Redirect to={'/'}/> : <RegistrationPage {...props}/>)}/>
             <Route exact path={'/login'} render={props => (TokenService.hasAuthToken() ? <Redirect to={'/'}/> : <LoginPage fetchBooks={this.fetchBooks} userId={this.state.userId} setUserId={this.setUserId} {...props}/>)}/>
             <Route exact path={'/about'} render={props => (TokenService.hasAuthToken() ? <Redirect to={'/'}/> : <DemoPage userId={this.state.userId} setUserId={this.setUserId} {...props}/>)}/>

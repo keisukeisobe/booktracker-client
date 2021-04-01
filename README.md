@@ -25,7 +25,7 @@ ratings of books in their library.
 <img src='./src/img/Mobile-Book.png' alt='Mobile Book View' width='360px'/>
 
 ### Mobile Profile View
-<img src='./src/img/Mobile-Graph.png' alt='Mobile Profile View' width='360px'/>
+<img src='./src/img/Mobile-Graphs.png' alt='Mobile Profile View' width='360px'/>
 
 ## API Documentation: 
 ```
